@@ -1,0 +1,99 @@
+<div ng-controller="myAppSentieroCtrl" ng-cloak>
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="50" layout="column">
+
+
+            <!-- TAPPA, METE E IMPEGNI -->
+            <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Sentiero</span>
+                        <span class="sm-headline">Sei in cammino sulla tappa della <b>{{info.user.tappa}}</b></span>
+                    </md-card-title-text>
+
+                    <md-card-title-media>
+                        <div class="md-media-sm card-media">
+                            <img class="sentiero" ng-if="info.user.tappa=='Responsabilità'"
+                                 ng-src="../images/responsabilita.jpg">
+                            <img class="sentiero" ng-if="info.user.tappa=='Scoperta'" ng-src="../images/scoperta.jpg">
+                            <img class="sentiero" ng-if="info.user.tappa=='Competenza'"
+                                 ng-src="../images/competenza.jpg">
+                        </div>
+                    </md-card-title-media>
+
+                </md-card-title>
+                <div class="card-content" layout="row" layout-wrap>
+                    <div flex="100">
+                        <br>
+                        <b>Meta:</b> <span ng-repeat="meta in dati.mete"
+                                           ng-if="meta.codice == info.user.codice && meta.tappa == info.user.tappa">
+                                {{meta.azione}}
+                              </span>
+                        <br><br>
+                        <b>Impegni:</b> <span ng-repeat="impegno in dati.impegni"
+                                              ng-if="impegno.codice == info.user.codice && impegno.tappa == info.user.tappa">
+                                    {{impegno.azione}}<span ng-if="impegno.azione != ''">; </span><br>
+                                 </span>
+                    </div>
+
+                </div>
+
+                <md-card-actions layout="row" layout-align="end center">
+                    <a href="#!/meteImpegni/{{info.user.codice}}">
+                        <md-button class="md-primary md-raised">Aggiorna</md-button>
+                    </a>
+                </md-card-actions>
+            </md-card>
+
+
+            <!-- SPECIALITA' -->
+            <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Specialità</span>
+                        <span class="md-subhead">Puoi vedere le Specialità per cui stai lavorando o scegliere una nuova Specialità da conquistare</span>
+                    </md-card-title-text>
+                </md-card-title>
+
+                <div class="card-content">
+                    <a href="#!/visualizzaCartaSpecialita/{{carta.$id}}" ng-repeat="carta in dati.cartaSpec"
+                       ng-if="carta.ragazzo == info.user.codice && carta.attiva == true">
+                        <img ng-src="../{{carta.img_url}}" class="listaSpecSentiero"></img></a>
+                </div>
+                <br>
+                <md-card-actions layout="row" layout-align="end center">
+                    <a href="#!/listaSpecialita">
+                        <md-button class="md-primary md-raised">Nuova</md-button>
+                    </a>
+
+                </md-card-actions>
+            </md-card>
+
+
+            <!-- BREVETTI -->
+            <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Brevetti</span>
+                        <span class="md-subhead">Puoi vedere i Brevetti per cui stai lavorando o scegliere un nuovo Brevetto da conquistare</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <div class="card-content">
+                    <a href="#!/visualizzaCartaCompetenza/{{cartaComp.$id}}" ng-repeat="cartaComp in dati.cartaComp"
+                       ng-if="cartaComp.ragazzo == info.user.codice">
+                        <img ng-src="../{{cartaComp.img_url}}" class="listaBrevSentiero"></img></a>
+
+                </div>
+                <br>
+                <md-card-actions layout="row" layout-align="end center">
+                    <a href="#!/listaBrevetti">
+                        <md-button class="md-primary md-raised">Nuovo</md-button>
+                    </a>
+
+                </md-card-actions>
+
+            </md-card>
+
+        </div>
+    </md-content>
+</div>

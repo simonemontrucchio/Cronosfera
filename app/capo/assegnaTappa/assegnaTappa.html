@@ -1,0 +1,68 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+
+    <div class="notifica feedback" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
+
+    <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Assegna ruoli</span>
+                </md-card-title-text>
+            </md-card-title>
+            <div class="card-content">
+
+
+                <div>Puoi decidere su quale tappa inizia a camminare il ragazzo. Non appena cliccherai sul radio button
+                    corrispondente alla tappa,
+                    la lista verrà riordinata in modo da avere tutti i ragazzi della stessa tappa vicini e per nome.
+                </div>
+                <br> <br>
+                <div layout="row">
+                    <div flex="40">
+                        <b>Responsabilità<br>Competenza<br>Scoperta</b>
+                    </div>
+                    <div flex>
+                        <img class="tappa-img" src="../images/scoperta.jpg">
+                    </div>
+                    <div flex>
+                        <img class="tappa-img" src="../images/competenza.jpg">
+                    </div>
+                    <div flex>
+                        <img class="tappa-img" src="../images/responsabilita.jpg">
+                    </div>
+                </div>
+
+                <br>
+                <md-divider ng-if="!$last"></md-divider>
+                <br>
+
+
+                <div layout="row" layout-wrap ng-repeat="utente in dati.utenti  | orderBy:['tappa','nome']" ng-if="utente.ruolo == 'ragazzo'">
+                    <div flex="40">
+                        <a href="#!/profiloRagazzo/{{utente.codice}}"><b>{{utente.nome}}</b> {{utente.cognome[0]}}.</a>
+                    </div>
+                    <div flex>
+                        <md-radio-group ng-model="utente.tappa" id="{{utente.codice}}">
+                            <md-radio-button value="Scoperta" class="md-primary" aria-label="{{utente.codice}}"></md-radio-button>
+                        </md-radio-group>
+                    </div>
+                    <div flex>
+                        <md-radio-group ng-model="utente.tappa" id="{{utente.codice}}">
+                            <md-radio-button value="Competenza" class="md-primary" aria-label="{{utente.codice}}"></md-radio-button>
+                        </md-radio-group>
+                    </div>
+                    <div flex>
+                        <md-radio-group ng-model="utente.tappa" id="{{utente.codice}}">
+                            <md-radio-button value="Responsabilità" class="md-primary" aria-label="{{utente.codice}}"></md-radio-button>
+                        </md-radio-group>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="salvaTappe()" class="md-raised md-primary">Salva</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</md-content>
+

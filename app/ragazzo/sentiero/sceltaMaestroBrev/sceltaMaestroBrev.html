@@ -1,0 +1,55 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Scegli Maestro di Competenza</span>
+                    <span class="md-subhead">per il brevetto di {{dati.nomeBrev}}</span>
+                    <br/>
+
+                </md-card-title-text>
+            </md-card-title>
+
+            <div class="card-content">
+
+                <md-radio-group ng-model="dati.maestro" ng-change="trovaMaestro()">
+                    <md-radio-button class="md-primary" ng-repeat="ragazzo in dati.utenti" value="{{ragazzo.codice}}"
+                                     ng-if="ragazzo.ruolo == 'ragazzo' && ragazzo.logged==false">
+                        <b>{{ragazzo.nome}}</b> {{ragazzo.cognome}}
+                    </md-radio-button>
+                </md-radio-group>
+                <br>
+
+
+                <div ng-if="dati.maestro != ''">Gli Impegni di <b>{{dati.maestroTemp.nome}}</b></div>
+                <br>
+                <div flex="100">
+                    <img class="img-impegni" ng-src="{{dati.maestroTemp.img_impegni}}">
+                </div>
+                <br>
+                <div ng-if="dati.maestro != ''">I tuoi impegni</div>
+                <br>
+                <div flex="100" ng-if="dati.maestro != ''">
+                    <img class="img-impegni" ng-src="{{info.user.img_impegni}}">
+                </div>
+
+
+                <br><br>
+                <md-divider ng-if="!$last"></md-divider>
+                <br><br>
+                <md-input-container class="md-block">
+                    <label>Perchè hai scelto questo Brevetto</label>
+                    <input required id="motivazione" ng-model="dati.motivazione" name="motivazione">
+                </md-input-container>
+
+            </div>
+
+            <md-card-action>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ng-click="salvaCartaCompetenza()" class="md-raised md-primary" id="btn-salva">Salva
+                    </md-button>
+                </md-card-actions>
+            </md-card-action>
+        </md-card>
+    </div>
+</md-content>

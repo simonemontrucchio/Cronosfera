@@ -1,0 +1,131 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+
+    <div class="alert alert-danger alert-dismissible" role="alert" ng-if="error">{{ error.message }}</div>
+
+    <div class="notifica feedback" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
+
+    <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+
+
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Profilo personale ragazzo</span>
+                    <span class="md-subhead">di <b>{{dati.user.nome}} {{dati.user.cognome}}</b></span>
+                </md-card-title-text>
+
+            </md-card-title>
+
+            <div class="card-content">
+                <div>
+                    Codice socio: {{dati.user.codice}}
+                </div>
+                <br><br>
+
+                <div class="knot rot-dx"></div>
+                <div class="knot rot-sx"></div>
+
+                <div class="md-media-lg card-media ">
+                    <img class="img-profile" ng-src="{{dati.user.img}}">
+                </div>
+
+
+                <div class="bio" ng-if="dati.user.descrizione != ''">
+                    Mi presento: {{dati.user.descrizione}}
+                </div>
+                <br>
+                <div class="bio" ng-if="dati.user.hobby != ''">
+                    Mi piace: {{dati.user.hobby}}
+                </div>
+                <br>
+            </div>
+            <md-card-actions layout="row" layout-align="end center">
+            </md-card-actions>
+
+        </md-card>
+
+
+        <!-- TABELLA IMPEGNI -->
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch
+                 ng-if="dati.user.codice == info.user.codice">
+
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">I Miei impegni</span>
+                </md-card-title-text>
+            </md-card-title>
+
+            <div class="card-content">
+                <div flex="100">
+                    <img class="img-impegni" ng-src="{{info.user.img_impegni}}">
+                </div>
+            </div>
+
+            <md-card-actions layout="row" layout-align="end center">
+            </md-card-actions>
+        </md-card>
+
+
+
+
+        <!-- CAMICIA CON DISTINTIVI -->
+        <md-card class="camicia">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">La mia camicia</span>
+
+                </md-card-title-text>
+            </md-card-title>
+            <br>
+            <div class="card-content">
+                <div layout="row" layout-wrap>
+                    <div flex="100">
+                        <img ng-src="../images/fis.jpg" class="fis">
+                    </div>
+                    <div flex="50">
+                        <img ng-src="../images/wosm.png" class="internazionale" ng-if="dati.user.sesso == 'M'">
+                        <img ng-src="../images/wagggs.png" class="internazionale" ng-if="dati.user.sesso == 'F'">
+                    </div>
+                    <div flex="50">
+                        <img ng-src="../images/promessa.png" class="promessa">
+                    </div>
+                    <div flex="50">
+
+
+                        <!-- EVENTUALI BREVETTI -->
+                        <img ng-src="../{{distintivo.img_url}}" class="brevetto"
+                             ng-repeat="distintivo in dati.distintivi | orderBy:'nome'"
+                             ng-if="distintivo.tipo == 'Brevetto' && distintivo.ragazzo == dati.user.codice">
+
+                        <!-- EVENTUALI SPECIALITA' -->
+                        <a ng-repeat="carta in dati.cartaSpec | orderBy:'nome'"
+                           ng-if="carta.ragazzo == dati.user.codice && carta.attiva == false"
+                           ng-click="vediCarta(carta.$id, carta.ragazzo)">
+                            <img ng-src="../{{carta.img_url}}" class="specialita">
+                        </a>
+
+
+                    </div>
+                    <div flex="50">
+                        <div ng-repeat="squadriglia in dati.squadriglie"
+                             ng-if="dati.user.sq != '' && squadriglia.nome == dati.user.sq" class="omerale"
+                             ng-style="{ 'background-color': squadriglia.primary, 'color': squadriglia.accent }">
+                            <b>Sq. {{dati.user.sq}}</b>
+                        </div>
+
+                        <img ng-src="../images/scoperta.jpg" class="tappa"
+                             ng-if="dati.user.tappa != '' && dati.user.tappa == 'Scoperta'">
+                        <img ng-src="../images/competenza.jpg" class="tappa"
+                             ng-if="dati.user.tappa != '' && dati.user.tappa == 'Competenza'">
+                        <img ng-src="../images/responsabilita.jpg" class="tappa"
+                             ng-if="dati.user.tappa != '' && dati.user.tappa == 'Responsabilità'">
+                    </div>
+                </div>
+
+            </div>
+            <md-card-actions layout="row" layout-align="end center">
+            </md-card-actions>
+        </md-card>
+
+    </div>
+</md-content>

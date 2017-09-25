@@ -1,0 +1,104 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+
+
+    <div flex-xs flex-gt-xs="50" layout="column" ng-controller="aggiornaProfiloRagazzoCtrl as $ctrl">
+        <div class="notifica feedback" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
+
+
+
+        <!-- AGGIORNA BIO -->
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Parla di te</span>
+
+                </md-card-title-text>
+            </md-card-title>
+            <br>
+            <div class="card-content">
+                <md-input-container class="md-block">
+                    <label>Come ti descrivi?</label>
+                    <input id="descrizione" name="descrizione" ng-model="dati.descrizione">
+                </md-input-container>
+
+                <br><br>
+
+                <md-input-container class="md-block">
+                    <label>Cosa ti piace fare?</label>
+                    <input id="hobby" name="hobby" ng-model="dati.hobby">
+                </md-input-container>
+
+            </div>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-primary md-raised" ng-click="salvaBio()" aria-label="">AGGIORNA</md-button>
+            </md-card-actions>
+        </md-card>
+
+
+
+
+        <!-- AGGIORNA FOTO -->
+        <form id="frmFoto" role="form" ng-submit="salvaFoto()">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Foto profilo</span>
+                        <span class="md-subhead">Carica una foto, possibilmente quadrata, che ti rappresenti</span>
+
+                    </md-card-title-text>
+                </md-card-title>
+                <br>
+                <div class="card-content">
+                    <div class="knot rot-dx"></div>
+                    <div class="knot rot-sx"></div>
+
+                    <div class="md-media-lg card-media ">
+                        <img class="img-profile" ng-src="{{info.user.img}}">
+                    </div>
+
+                    <file-upload on-change="$ctrl.onChange"></file-upload>
+                    <div class="bio">
+                        {{dati.uploading}}
+                    </div>
+
+                </div>
+                <md-card-actions layout="row" layout-align="end center">
+
+                    <md-button type="submit" class="md-primary md-raised">AGGIORNA</md-button>
+                </md-card-actions>
+            </md-card>
+        </form>
+
+
+
+
+        <!-- AGGIORNA IMEPGNI -->
+        <form id="frmImpegni" role="form" ng-submit="salvaImpegni()">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Foto impegni settimanali</span>
+                        <span class="md-subhead">Carica la foto dei tuoi impegni settimanali dopo averli scritti su un foglio o un file</span>
+
+                    </md-card-title-text>
+                </md-card-title>
+                <br>
+                <div class="card-content">
+                    <div class="md-media-lg card-media ">
+                        <img class="img-impegni" ng-src="{{info.user.img_impegni}}">
+                    </div>
+
+                    <br>
+                    <file-upload on-change="$ctrl.onChange"></file-upload>
+                    <div class="bio">
+                        {{dati.uploading}}
+                    </div>
+
+                </div>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button type="submit" class="md-primary md-raised">AGGIORNA</md-button>
+                </md-card-actions>
+            </md-card>
+        </form>
+    </div>
+</md-content>

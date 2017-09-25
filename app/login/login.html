@@ -1,0 +1,94 @@
+<div ng-controller="LoginCtrl">
+    <md-content class="md-padding" layout-xs="column" layout="row">
+
+        <div class="notifica errore" role="alert" ng-if="error">Login fallito! {{ error.message }}</div>
+        <div class="notifica feedback" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
+
+        <div flex-xs flex-gt-xs="50" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-if="!isLogged()">
+
+
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Effettua l'accesso</span>
+                    </md-card-title-text>
+                    <hr>
+                </md-card-title>
+
+                <form id="frmLogin" role="form" ng-submit="signIn()">
+
+                    <div class="card-content">
+
+                        <br>
+
+                        <md-input-container class="md-block form-group">
+                            <label>Email</label>
+                            <input required id="txtEmail" ng-model="user.email" name="email" type="email"
+                                   class="form-control">
+                            <div ng-messages="frmLogin.email.$error">
+                                <div ng-message="required">Questo campo è obbligatorio e deve essere un indirizzo
+                                    valido.
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                        <br><br>
+
+                        <md-input-container class="md-block form-group">
+                            <label>Password</label>
+                            <input required id="txtPass" ng-model="user.password" name="password" type="password"
+                                   class="form-control">
+                            <div ng-messages="frmLogin.password.$error">
+                                <div ng-message="required">Questo campo è obbligatorio.</div>
+                            </div>
+                        </md-input-container>
+
+                        <br>
+
+                    </div>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button type=submit" class="md-raised md-primary">ACCEDI</md-button>
+                    </md-card-actions>
+                </form>
+
+            </md-card>
+
+
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-if="isLogged()">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Esci dal tuo account</span>
+                        <span class="md-subhead">{{info.user.nome}} {{info.user.cognome}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <div class="card-content">
+                </div>
+
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ng-click="logout()" class="md-raised md-warn">LOGOUT</md-button>
+                </md-card-actions>
+            </md-card>
+
+
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-if="!isLogged()">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Oppure</span>
+                        <span class="md-subhead">Registra un nuovo account capo</span>
+                    </md-card-title-text>
+                </md-card-title>
+
+                <div class="card-content">
+                </div>
+
+                <md-card-actions layout="row" layout-align="end center">
+                    <a href="#!/registrationView">
+                        <md-button class="md-raised md-primary">REGISTRA</md-button>
+                    </a>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+</div>
+
+

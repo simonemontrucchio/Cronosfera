@@ -1,0 +1,48 @@
+<div id="popupContainer">
+    <md-content class="md-padding" layout-xs="column" layout="row">
+
+        <div class="notifica feedback" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
+
+        <div flex-xs flex-gt-xs="50" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Riepilogo scadenze</span>
+                        <span class="md-subhead">delle specialità dei ragazzi</span>
+                    </md-card-title-text>
+                    <hr>
+                </md-card-title>
+
+                <div class="card-content">
+                    <div>Qui di seguito vedrai il riepilogo di tutte le scadenze (se ne ha e se non più vecchie di 3
+                        mesi) di ciascun ragazzo.
+                    </div>
+                    <br>
+                    <div>Ogni box indica il numero di giorni che mancano alla scadenza oppure, se è già passata
+                        (negativa) e se è già stata confermata (verde) o meno (arancione) dai capi.
+                    </div>
+                    <br>
+
+                    <div layout="row" layout-wrap ng-repeat="utente in dati.utenti  | orderBy:'nome'"
+                         ng-if="utente.ruolo == 'ragazzo'">
+                        <div flex="30">
+                            <a href="#!/profiloRagazzo/{{utente.codice}}"><b>{{utente.nome}}</b> {{utente.cognome[0]}}.</a>
+                        </div>
+                        <div flex="70" layout="row" layout-wrap layout-align="start start">
+                            <div flex="20" ng-class="personalizzaBox({{scadenza.deadline}}, {{scadenza.conferma}})"
+                                 ng-repeat="scadenza in dati.scadenze |  stringToInteger | orderBy:'deadline'"
+                                 ng-if="scadenza.ragazzo == utente.codice && scadenza.deadline > -90"
+                                 ng-click="showAlert($event,scadenza.azione, scadenza.nome_ragazzo, scadenza.nome_specialita, scadenza.deadline, scadenza.conferma)">
+                                {{scadenza.deadline}}
+                            </div>
+                        </div>
+                        <br><br>
+                    </div>
+                </div>
+
+                <md-card-actions layout="row" layout-align="end center">
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+</div>

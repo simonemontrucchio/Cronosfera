@@ -1,0 +1,639 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import url('https://fonts.googleapis.com/css?family=Baloo&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic');
+
+/*
+@media (min-width: 0) and (max-width: 959px) and (orientation: landscape) {
+    md-toolbar {
+        min-height: 56px; }
+
+}
+*/
+
+@media screen and (min-width: 350px) {
+
+    .menu-laterale {
+        line-height: 2.25em;
+        font-size: 1.35em;
+        overflow-y: auto !important;
+    }
+
+    .user-name {
+        font-size: 1.5em;
+        margin: 0;
+        margin-right: 16px;
+        padding: 1.15em 0;
+        line-height: 1.6em;
+        text-align: center;
+        color: #1B5E20;
+        height: 150px;
+    }
+
+    .user-img {
+        width: 120px;
+        height: 120px;
+        margin: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    .personal-box {
+        margin-top: 55px;
+
+        background: #B2FF59; /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(left top, #4CAF50, #B2FF59); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(bottom right, #4CAF50, #B2FF59); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(bottom right, #4CAF50, #B2FF59); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(to bottom right, #4CAF50, #B2FF59); /* Standard syntax (must be last) */
+    }
+
+}
+
+@media screen and (max-width: 350px) {
+
+    .menu-laterale {
+        line-height: 2.2em;
+        font-size: 1.25em;
+        overflow-y: auto !important;
+    }
+
+    .user-name {
+        font-size: 1em;
+        margin: 0;
+        margin-right: 16px;
+        padding: 1.15em 0;
+        line-height: 1.6em;
+        text-align: center;
+        color: #1B5E20;
+        height: 150px;
+    }
+
+    .user-img {
+        width: 75px;
+        height: 75px;
+        margin: 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    .personal-box {
+        margin-top: 55px;
+        height: 110px;
+
+        background: #B2FF59; /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(left top, #4CAF50, #B2FF59); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(bottom right, #4CAF50, #B2FF59); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(bottom right, #4CAF50, #B2FF59); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(to bottom right, #4CAF50, #B2FF59); /* Standard syntax (must be last) */
+    }
+}
+
+._md {
+    /*overflow: hidden;*/
+}
+
+a {
+    text-decoration: none !important;
+    color: #4CAF50 !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: #B2FF59 !important;
+}
+
+a:visited {
+    text-decoration: none !important;
+}
+
+a.logotype, a.logotype:visited, a.logotype:active, a.logotype:hover {
+    font-family: 'Baloo', cursive;
+    color: #f7f7f7 !important;
+    font-size: 1.5em;
+}
+
+h1 {
+    text-align: center;
+}
+
+body {
+    background-color: #fafafa !important;
+}
+
+.main-view {
+    margin-top: 56px;
+}
+
+.md-block {
+    margin-top: 0;
+    margin-bottom: 15px;
+    height: 20px;
+}
+
+.menu-laterale > ul {
+    padding-left: 0;
+}
+
+.menu-laterale > ul > li > a:not(.not-active) {
+    text-decoration: none;
+    color: #4CAF50;
+}
+
+.menu-laterale > ul > li > a.not-active {
+    color: lightgray !important;
+}
+
+.tappa-img {
+    width: 50px;
+    position: relative;
+    left: -14px;
+}
+
+.not-active {
+    pointer-events: none;
+    cursor: default;
+    color: lightgray;
+}
+
+.card-content {
+    padding: 0 16px;
+}
+
+.search {
+    color: #f7f7f7;
+}
+
+.toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
+    color: white;
+}
+
+md-toolbar {
+    min-height: 56px !important;
+}
+
+.md-toolbar-tools {
+    height: 56px !important;
+    max-height: 56px !important;
+}
+
+md-toolbar.md-primary {
+    position: fixed !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.img-profile-card {
+    margin-right: 10px;
+}
+
+/*
+    SIDENAV
+ */
+
+md-backdrop {
+    height: 100% !important;
+    position: fixed !important;
+}
+
+.md-sidenav-left, .md-sidenav-right {
+    position: fixed;
+}
+
+.ng-scope .layout-column {
+    height: 100%;
+}
+
+/****
+    STILE RADIO BUTTONS
+ */
+.radioButtondemoBasicUsage body {
+    padding: 20px;
+}
+
+.radioButtondemoBasicUsage hr {
+    margin-left: -20px;
+    opacity: 0.3;
+}
+
+.radioButtondemoBasicUsage md-radio-group {
+    width: 150px;
+}
+
+.radioButtondemoBasicUsage p:last-child {
+    padding-bottom: 50px;
+}
+
+.radioButtondemoBasicUsage [ng-controller] {
+    padding: 0 20px;
+}
+
+.radioButtondemoBasicUsage .radioValue {
+    margin-left: 5px;
+    color: #0f9d58;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.radioButtondemoBasicUsage md-icon {
+    margin: 0 20px 20px;
+    width: 128px;
+    height: 128px;
+}
+
+.radioButtondemoBasicUsage .ipsum {
+    color: saddlebrown;
+    font-size: 0.9em;
+}
+
+/******
+    BUTTONS
+ */
+
+.md-button.md-primary.md-raised {
+    background-color: #4CAF50 !important;
+}
+
+.buttondemoBasicUsage section {
+    background: #f7f7f7;
+    border-radius: 3px;
+    text-align: center;
+    margin: 1em;
+    position: relative !important;
+    padding-bottom: 10px;
+}
+
+.buttondemoBasicUsage md-content {
+    margin-right: 7px;
+}
+
+.buttondemoBasicUsage section .md-button {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.buttondemoBasicUsage .label {
+    position: absolute;
+    bottom: 5px;
+    left: 7px;
+    font-size: 14px;
+    opacity: 0.54;
+}
+
+/*********
+    INPUT ERRORS
+ */
+.inputdemoErrors .inputErrorsApp {
+    min-height: 48px;
+}
+
+.inputdemoErrors md-input-container > p {
+    font-size: 0.8em;
+    text-align: left;
+    width: 100%;
+}
+
+/******
+    SWITCH
+ */
+
+md-switch {
+    margin: 0 !important;
+    height: 1em !important;
+    position: relative;
+    top: 4px;
+}
+
+md-switch.toggle-scadenza {
+    top: 8px;
+}
+
+/*******
+    PROFILO
+ */
+.img-profile {
+    width: 155px;
+    height: 155px;
+    position: relative;
+    top: -50px;
+    left: 25%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 4px #ffd600,
+    0 0 0 8px #03a9f4,
+    0 0 0 12px #0d47a1;
+}
+
+.knot {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    box-shadow: -10px 0 0 14px white,
+    -4px 0 0 12px #ffd600,
+    0px 0 0 12px #03a9f4,
+    4px 0 0 12px #0d47a1;
+}
+
+.rot-dx {
+    top: 185px;
+    left: 45%;
+    transform: rotate(-25deg);
+}
+
+.rot-sx {
+    top: 148px;
+    left: 36%;
+    transform: rotate(25deg);
+}
+
+.bio {
+    text-align: center;
+}
+
+/****
+    SCADENZE
+ */
+.box-scadenza {
+    /*width: 40px;*/
+    text-align: center;
+    padding: 4px;
+    margin: 0px 4px 8px 4px;
+    min-width: inherit;
+    position: relative;
+    top: -4px;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    background-color: #fafafa;
+}
+
+.scadenza-confermata {
+    background-color: #4CAF50;
+    color: rgb(255, 255, 255);
+}
+
+.scadenza-mancata {
+    background-color: #ff5722;
+    color: #fff;
+}
+
+.border-scadenza {
+
+    padding-left: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 2px;
+    background-color: #fafafa;
+}
+
+.border-scadenza-confermata {
+    border-right: 16px solid #4CAF50;
+}
+
+.border-scadenza-mancata {
+    border-right: 16px solid #ff5722;
+}
+
+/*****
+    RISULTATI RICERCA
+ */
+.risultati-ricerca:before {
+    border-top: solid red 6px;
+}
+
+.risultati-ricerca {
+    border-top: solid #388E3C 1px;
+    width: 240px;
+    position: absolute;
+    top: 56px;
+    left: 44px;
+    z-index: 1;
+    padding-top: 16px;
+
+    background: #B2FF59; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, #4CAF50, #B2FF59); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #4CAF50, #B2FF59); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #4CAF50, #B2FF59); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #4CAF50, #B2FF59); /* Standard syntax (must be last) */
+}
+
+@media screen and (min-width: 538px) {
+    .risultati-ricerca {
+        top: 56px !important;
+    }
+}
+
+.result-img {
+    width: 40px;
+    height: 40px;
+    margin: 0 6px 16px 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.result-text {
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 0.75em;
+}
+
+.result-text-dx {
+    color: rgba(0, 0, 0, 0.66);
+    font-size: 0.75em;
+}
+
+/****
+    DISTINTIVI
+ */
+.camicia {
+    background-color: #93b4d7;
+    /*
+    padding: 16px;
+    border-radius: 4px;
+    */
+}
+
+.fis {
+    width: 100%;
+}
+
+.internazionale {
+    width: 100%;
+    padding-right: 4px;
+    padding-top: 8px;
+}
+
+.promessa {
+    width: 100%;
+    padding-left: 4px;
+    padding-top: 8px;
+}
+
+.tappa {
+    width: 100%;
+    padding-left: 4px;
+    padding-top: 8px;
+}
+
+.specialita {
+    width: 50%;
+    padding-right: 8px;
+    padding-top: 8px;
+}
+
+.brevetto {
+    width: 100%;
+    padding-right: 8px;
+    padding-top: 8px;
+}
+
+/* OMERALE */
+.omerale {
+    border-radius: 0 4px 4px 0;
+    padding: 4px;
+    text-align: center;
+    margin: 8px 0 4px 4px;
+}
+
+/****
+    SPECIALITA' E BREVETTI
+ */
+#myDiv {
+    width: 100%;
+    padding: 50px 0;
+    margin-top: 20px;
+}
+
+.img-impegni {
+    width: 100%;
+}
+
+.sentiero {
+    width: 100%;
+}
+
+.nome-specialita {
+    font-size: 1.5em;
+    padding-left: 8px;
+    display: inline-block;
+}
+
+.nome-brevetto {
+    font-size: 1.5em;
+    padding-left: 8px;
+    display: inline-block;
+}
+
+.brevetto-carta,
+.specialita-carta {
+    width: 100%;
+}
+
+/******
+    IMMAGINI-LISTA SPECIALITA
+ */
+img.listaSpecialita {
+    width: 95%;
+    position: relative;
+    top: 4px;
+}
+
+img.listaBrevetti {
+    width: 95%;
+}
+
+img.img-scadenze {
+    position: relative;
+    top: 2px;
+    width: 85%;
+}
+
+.scadenze-content {
+    line-height: 2em;
+}
+
+/******
+    IMMAGINI-SENTIERO
+ */
+img.listaSpecSentiero {
+    width: 74px;
+    height: 74px;
+    padding: 0px 1px 6px 1px;
+}
+
+img.listaBrevSentiero {
+    width: 100px;
+    height: 100px;
+    padding: 0px 1px 6px 1px;
+}
+
+/****
+    NOTIFICHE
+ */
+.feedback {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.errore {
+    background-color: #f4511e;
+    color: white;
+}
+
+.notifica {
+    font-family: Roboto;
+    font-size: 1em;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 1;
+    box-sizing: border-box;
+    cursor: default;
+    overflow: hidden;
+    padding: 20px;
+    margin: 4px;
+    border-radius: 2px;
+    opacity: 1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+    -webkit-animation: entrata 1.0s forwards 0.0s,
+    uscita 1.0s forwards 5.0s;
+    -webkit-animation-iteration-count: 1;
+    animation: entrata 1.0s forwards 0.0s,
+    uscita 1.0s forwards 5.0s;
+    animation-iteration-count: 1;
+}
+
+@-webkit-keyframes entrata {
+    0% {
+        opacity: 0;
+        top: -200px;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes entrata {
+    0% {
+        opacity: 0;
+        top: -200px;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes uscita {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        top: -200px;
+    }
+}
+
+@keyframes uscita {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        top: -200px;
+    }
+}

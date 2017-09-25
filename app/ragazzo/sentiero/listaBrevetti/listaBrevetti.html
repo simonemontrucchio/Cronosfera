@@ -1,0 +1,55 @@
+<div id="popupContainer">
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="50" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Scegli Brevetto</span>
+                        <span class="md-subhead">Non vengono mostrati quelli per cui stai già lavorando</span>
+                    </md-card-title-text>
+                </md-card-title>
+
+                <div class="card-content">
+
+                    <div layout="row" layout-wrap ng-repeat="brevetto in dati.brevetti | orderBy:'nome'"
+                         ng-if="!dati.escludi.toLowerCase().includes(brevetto.nome.toLowerCase())">
+
+                        <div flex="35">
+                            <img class="listaBrevetti" ng-src="../{{brevetto.img_url}}">
+                        </div>
+
+                        <div flex="65">
+                            <span class="nome-brevetto">{{brevetto.nome}}
+                                <br>
+                                <br ng-if="brevetto.nome.length <= 20"></span>
+
+                            <div layout="row" layout-align="space-between center">
+                                <md-button class="md-primary md-raised" ng-click="showAlert($event,brevetto.nome)"
+                                           aria-label="{{brevetto.nome}}">Leggi
+                                </md-button>
+                                <md-button ng-click="scegliBrevetto(brevetto.nome)" class="md-raised md-primary"
+                                           id="btn-salva">Scegli
+                                </md-button>
+                            </div>
+
+                        </div>
+
+                        <div flex="100">
+                            <br>
+                        </div>
+                        <div flex="100">
+                            <md-divider ng-if="!$last"></md-divider>
+                        </div>
+                        <br>
+                    </div>
+
+                </div>
+
+
+                <md-card-actions layout="row" layout-align="none">
+
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+</div>

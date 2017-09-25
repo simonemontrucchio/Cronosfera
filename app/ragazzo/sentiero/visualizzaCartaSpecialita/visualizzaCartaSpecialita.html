@@ -1,0 +1,64 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Carta di Specialità</span>
+                    <span class="md-subhead">di <b>{{dati.cartaSpec.nome}}</b></span>
+                </md-card-title-text>
+            </md-card-title>
+            <div class="card-content">
+
+                <div layout="row" layout-wrap>
+
+                    <div flex="30">
+                    </div>
+                    <div flex="40">
+                        <img class="specialita-carta" ng-src="../{{dati.cartaSpec.img_url}}">
+                    </div>
+                    <div flex="30">
+                    </div>
+                </div>
+
+                <br>
+
+                <div>
+                    <b>Motivazione</b>: {{dati.cartaSpec.motivazione}}
+                </div>
+                <div>
+                    <b>Maestro di Specialità</b>: <a href="#!/profiloRagazzo/{{dati.maestro.codice}}"><b>{{dati.maestro.nome}}</b>
+                    {{dati.maestro.cognome}}</a>
+                </div>
+                <br>
+
+
+                <div ng-repeat="scadenza in dati.scadenze |  stringToInteger  |  orderBy:'deadline'"
+                     ng-if="scadenza.carta_spec==dati.valoreIdCarta"
+                     ng-class="personalizzaBox({{scadenza.deadline}}, {{scadenza.conferma}})">
+                    <br>
+                    <b>Azione</b>: {{scadenza.azione}}
+                    <br>
+                    <div ng-if="scadenza.deadline >= 0">
+                        <b>Scadenza</b>: tra {{scadenza.deadline}} giorni
+                    </div>
+                    <div ng-if="scadenza.deadline < 0">
+                        <b>Scadenza</b>: {{scadenza.deadline | removeDash}} giorni fa, <b
+                            ng-if="scadenza.conferma == true">confermata</b><b ng-if="scadenza.conferma == false">mancata</b>
+                    </div>
+                    <br>
+
+                </div>
+                <br>
+
+            </div>
+
+            <md-card-actions layout="row" layout-align="end center">
+                <a href="#!/visualizzaCartaCompetenza/{{cartaComp.$id}}"
+                   ng-repeat="cartaComp in dati.carteComp"
+                   ng-if="cartaComp.elenco_spec_collegate.toLowerCase().includes(dati.cartaSpec.nome.toLowerCase())">
+                    <md-button type=submit" class="md-raised md-primary">Brevetto</md-button>
+                </a>
+            </md-card-actions>
+        </md-card>
+    </div>
+</md-content>

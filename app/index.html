@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Scrapbook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- FULL SCREEN MODE -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- ICONE -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/home-icon.png">
+    <link rel="apple-touch-icon-precomposed" href="../images/home-icon.png"/>
+
+    <!-- BARRA INDIRIZZI COLORATA -->
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#4CAF50">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#4CAF50">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4CAF50">
+
+
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+    <script src="app.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <script src="ragazzo/sentiero/sentiero.js"></script>
+    <script src="ragazzo/homeRagazzo/homeRagazzo.js"></script>
+    <script src="capo/fiamma/fiamma.js"></script>
+    <script src="login/login.js"></script>
+    <script src="capo/homeCapo/homeCapo.js"></script>
+    <script src="components/authentication/authentication.js"></script>
+    <script src="components/authentication/authentication-service.js"></script>
+    <script src="capo/registrazioneRagazzo/registrazioneRagazzo.js"></script>
+    <script src="components/registration/utente.js"></script>
+    <script src="components/registration/registrazione-ragazzo-service.js"></script>
+    <script src="components/squadriglia/squadriglia.js"></script>
+    <script src="components/squadriglia/squadriglia-service.js"></script>
+    <script src="components/squadriglia/fiamma-service.js"></script>
+    <script src="ragazzo/sentiero/listaSpecialita/listaSpecialita.js"></script>
+    <script src="registrationView/registrationView.js"></script>
+    <script src="capo/formaSquadriglie/formaSquadriglie.js"></script>
+    <script src="capo/staff/staff.js"></script>
+    <script src="components/registration/utenti-service.js"></script>
+    <script src="components/evento/evento.js"></script>
+    <script src="components/evento/evento-service.js"></script>
+    <script src="capo/assegnaTappa/assegnaTappa.js"></script>
+    <script src="components/specialita/specialita.js"></script>
+    <script src="components/specialita/specialita-service.js"></script>
+    <script src="capo/profiloCapo/profiloCapo.js"></script>
+    <script src="capo/confermaScadenze/confermaScadenze.js"></script>
+    <script src="components/specialita/scadenze-service.js"></script>
+    <script src="components/cartaSpecialita/cartaSpecialita.js"></script>
+    <script src="components/cartaSpecialita/cartaSpecialita-service.js"></script>
+    <script src="components/cartaSpecialita/registrazione-cartaSpecialita-service.js"></script>
+    <script src="capo/riepilogoScadenze/riepilogoScadenze.js"></script>
+    <script src="ragazzo/profiloRagazzo/profiloRagazzo.js"></script>
+    <script src="ragazzo/sentiero/sceltaMaestro/sceltaMaestro.js"></script>
+    <script src="ragazzo/sentiero/scadenzeCarta/scadenzeCarta.js"></script>
+    <script src="ragazzo/sentiero/visualizzaCartaSpecialita/visualizzaCartaSpecialita.js"></script>
+    <script src="ragazzo/aggiornaProfilo/aggiornaProfilo.js"></script>
+    <script src="capo/aggiornaProfilo/aggiornaProfilo.js"></script>
+    <script src="components/impegni/impegni.js"></script>
+    <script src="components/impegni/impegni-service.js"></script>
+    <script src="components/mete/mete.js"></script>
+    <script src="components/mete/mete-service.js"></script>
+    <script src="ragazzo/sentiero/meteImpegni/meteImpegni.js"></script>
+    <script src="components/file-upload/file-upload.js"></script>
+    <script src="components/file-upload/file-upload-directive.js"></script>
+    <script src="components/brevetti/brevetti.js"></script>
+    <script src="components/brevetti/brevetti-service.js"></script>
+    <script src="ragazzo/sentiero/listaBrevetti/listaBrevetti.js"></script>
+    <script src="components/cartaCompetenza/cartaCompetenza.js"></script>
+    <script src="components/cartaCompetenza/cartaCompetenza-service.js"></script>
+    <script src="ragazzo/sentiero/sceltaMaestroBrev/sceltaMaestroBrev.js"></script>
+    <script src="ragazzo/sentiero/visualizzaCartaCompetenza/visualizzaCartaCompetenza.js"></script>
+
+
+</head>
+<body ng-app="myApp" ng-controller="AppCtrl1">
+
+<div ng-controller="LogCtrl">
+
+
+    <header ng-cloak>
+        <md-content>
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools">
+                    <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings">
+                        <md-icon aria-label="Menu" class="material-icons">menu</md-icon>
+                    </md-button>
+
+                    <!-- RICERCA -->
+                    <md-input-container md-no-float class="md-block md-hue-1">
+                        <input id="ricerca" ng-model="search.ricerca" name="ricerca" placeholder="Cerca utenti"
+                               class="search">
+                    </md-input-container>
+
+                    <md-button class="md-icon-button" aria-label="Events" ng-click="eventi()" ng-hide="isOpenRight()"
+                               class="md-primary" ng-if="isLogged()">
+                        <md-icon aria-label="Event" class="material-icons">event</md-icon>
+                    </md-button>
+
+                    <md-button class="md-icon-button" aria-label="Notifications" ng-click="notifiche()"
+                               ng-hide="isOpenRight()" class="md-primary" ng-if="isLogged()">
+                        <md-icon aria-label="Notifications" class="material-icons">notifications</md-icon>
+                    </md-button>
+
+
+                </div>
+
+                <!-- MOSTRA RISULTATI RICERCA -->
+                <div ng-controller="SearchCtrl" class="risultati-ricerca" ng-if="search.ricerca != ''">
+                    <div layout="row" layout-wrap ng-repeat="utente in dati.utenti  | orderBy:'nome'" ng-if="utente.codice.includes(search.ricerca)
+                                                                                                ||  utente.nome.toLowerCase().includes(search.ricerca.toLowerCase())
+                                                                                                ||  utente.cognome.toLowerCase().includes(search.ricerca.toLowerCase())"
+                         ng-click="vediProfilo(utente.codice)">
+
+                        <div flex="30">
+                            <img class="result-img" ng-src="{{utente.img}}">
+                        </div>
+                        <div flex="30" ng-if="utente.img == false">
+                            <img class="result-img" ng-src="../images/default_profile.png">
+                        </div>
+
+                        <div flex="40" class="result-text">
+                            <b>{{utente.nome}}</b>
+                            <br>
+                            {{utente.cognome}}
+                        </div>
+                        <div flex="30" ng-if="utente.ruolo == 'capo' && utente.staff == true" class="result-text-dx">
+                            <b>Staff</b>
+                            <br>
+                            <i>{{utente.codice}}</i>
+                        </div>
+                        <div flex="30" ng-if="utente.ruolo == 'capo' && utente.staff == false" class="result-text-dx">
+                            <b></b>
+                            <br>
+                            <i>{{utente.codice}}</i>
+                        </div>
+                        <div flex="30" ng-if="utente.ruolo == 'ragazzo'" class="result-text-dx">
+                            <b>{{utente.sq}}</b>
+                            <br>
+                            <i>{{utente.codice}}</i>
+                        </div>
+
+                        <br>
+                        <hr>
+                        <br>
+                    </div>
+                </div>
+            </md-toolbar>
+        </md-content>
+    </header>
+
+
+    <div ng-view class="main-view">
+        <!-- QUI DENTRO CI SONO LE VIEW CARICATE DINAMICAMENTE SE E' STATO FATTO IL LOGIN-->
+    </div>
+
+
+    <section layout="row" flex ng-controller="LeftCtrl">
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
+
+            <!-- toolbar della sidenav -->
+            <md-toolbar class="md-primary">
+
+                <div class="md-toolbar-tools">
+
+
+                    <md-button ng-click="close()" class="md-icon-button" aria-label="Home">
+                        <a href="#!/homeCapo">
+                            <md-icon aria-label="Home" class="material-icons">home</md-icon>
+                        </a>
+                    </md-button>
+
+                    <h1 flex md-truncate><a class="logotype" href="#!/homeCapo" ng-click="close()">SCRAPBOOK</a></h1>
+
+                    <md-button ng-click="close()" class="md-icon-button" aria-label="Home">
+                        <a href="#!/login">
+                            <md-icon aria-label="Logout" class="material-icons">exit_to_app</md-icon>
+                        </a>
+                    </md-button>
+
+
+                </div>
+            </md-toolbar>
+
+
+            <!-- Box personale -->
+            <a href="#!/profiloCapo/{{info.user.codice}}" ng-click="close()" ng-if="isLogged()">
+                <div layout="row" class="personal-box">
+                    <div flex="none">
+                        <img class="user-img" ng-src="{{info.user.img}}">
+                    </div>
+                    <div flex="none" ng-if="info.user.img == false">
+                        <img class="user-img" ng-src="../images/default_profile.png">
+                    </div>
+                    <div flex>
+
+                        <div class="user-name">
+                            <b>
+                                {{info.user.nome}}
+                                <br>
+                                {{info.user.cognome}}
+                            </b>
+                            <br>
+                            <h5 ng-if="info.user.staff == true">
+                                Staff Stella Polare
+                            </h5>
+                            <h5 ng-if="info.user.ruolo == 'ragazzo' && info.user.sq != ''">
+                                Sq. {{info.user.sq}}
+                            </h5>
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+
+
+            <md-content layout-padding ng-if="isLogged()">
+
+                <!-- Voci del menu laterale -->
+                <div class="menu-laterale">
+
+
+                    <!-- MENU CAPO -->
+                    <ul ng-if="info.user.ruolo == 'capo'">
+                        <li>
+                            <a href="#!/riepilogoScadenze" ng-click="close()">
+                                <md-icon aria-label="Event Range" class="material-icons">event_range</md-icon>
+                                Scadenze Ragazzi</a>
+                        </li>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <li>
+                            <a href="#!/confermaScadenze" ng-click="close()">
+                                <md-icon aria-label="Beenhere" class="material-icons">beenhere</md-icon>
+                                Conferma Scadenze</a>
+                        </li>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <li>
+                            <a href="#!/assegnaTappa" ng-click="close()">
+                                <md-icon aria-label="Verified User" class="material-icons">verified_user</md-icon>
+                                Assegnazione Ruoli</a>
+                        </li>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <li>
+                            <a href="#!/fiamma" ng-click="close()">
+                                <md-icon aria-label="Flag" class="material-icons">flag</md-icon>
+                                Assegnazione Fiamma</a>
+                        </li>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <li>
+                            <a href="#" ng-click="close()" class="not-active">
+                                <md-icon aria-label="Event" class="material-icons not-active">event</md-icon>
+                                Eventi</a>
+                        </li>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <li>
+                            <a href="#" ng-click="close()" class="not-active">
+                                <md-icon aria-label="Forum" class="material-icons not-active">forum</md-icon>
+                                Conversazioni</a>
+                        </li>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <li>
+                            <a href="#!/staff" ng-click="close()">
+                                <md-icon aria-label="Group Add" class="material-icons">group_add</md-icon>
+                                Forma Staff</a>
+                        </li>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <li>
+                            <a href="#!/registrazioneRagazzo" ng-click="close()">
+                                <md-icon aria-label="Person Add" class="material-icons">person_add</md-icon>
+                                Aggiungi Ragazzo</a>
+                        </li>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <li>
+                            <a href="#!/formaSquadriglie" ng-click="close()">
+                                <md-icon aria-label="Group Add" class="material-icons">group_add</md-icon>
+                                Forma Squadriglie</a>
+                        </li>
+                    </ul>
+
+
+                    <!-- MENU RAGAZZO -->
+                    <ul ng-if="info.user.ruolo == 'ragazzo'">
+                        <li>
+                            <a href="#!/aggiornaProfiloRagazzo/{{info.user.codice}}" ng-click="close()">
+                                <md-icon aria-label="Person" class="material-icons">person</md-icon>
+                                Modifica Profilo</a>
+                        </li>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <li>
+                            <a href="#!/sentiero" ng-click="close()">
+                                <md-icon aria-label="Beenhere" class="material-icons">beenhere</md-icon>
+                                Sentiero</a>
+                        </li>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <li>
+                            <a href="#" ng-click="close()" class="not-active">
+                                <md-icon aria-label="Forum" class="material-icons not-active">forum</md-icon>
+                                Conversazioni</a>
+                        </li>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <li>
+                            <a href="#" ng-click="close()" class="not-active">
+                                <md-icon aria-label="Flag" class="material-icons not-active">flag</md-icon>
+                                Angolo di Squadriglia</a>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+
+            </md-content>
+
+
+        </md-sidenav>
+
+
+        <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+
+
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools">
+
+                    <!-- TOOLBAR SE SI APRONO LE NOTIFICHE -->
+                    <div layout="row" ng-if="data.menu == 'notifications'">
+                        <md-icon flex="40" aria-label="Notifications" class="material-icons">notifications</md-icon>
+                        <h1 flex="60" style="white-space: nowrap;">Notifiche</h1>
+                    </div>
+
+                    <!-- TOOLBAR SE SI APRONO GLI EVENTI -->
+                    <div layout="row" ng-if="data.menu == 'events'">
+                        <md-icon flex="40" aria-label="Event" class="material-icons">event</md-icon>
+                        <h1 flex="60" style="white-space: nowrap;"> Prossimi eventi</h1>
+                    </div>
+                </div>
+            </md-toolbar>
+
+            <br><br><br>
+
+            <md-content ng-controller="RightCtrl" layout-padding>
+
+                <!-- CONTENUTO SE SI APRONO LE NOTIFICHE -->
+                <div ng-if="data.menu == 'notifications' && isLogged()">
+
+
+                    <!-- NOTOFICHE RAGAZZO -->
+                    <div ng-if="info.user.ruolo == 'ragazzo'">
+                        <div layout="row" layout-wrap>
+                            <div flex="30">
+                                <img class="media-object img-responsive listaSpecialita img-scadenze"
+                                     ng-src="../images/Allevatore.jpg">
+                            </div>
+                            <div flex="70" class="scadenze-content">
+                                <div>
+                                    Specialità di Allevatore
+                                </div>
+
+                                <div>
+                                    <i>Dare da mangiare al cane</i>
+                                </div>
+                                <div layout="row" flex="100" layout-align="space-between">
+                                    <div>
+                                        Scadenza: tra 18 giorni.
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <br>
+                        <div layout="row" layout-wrap>
+                            <div flex="100" class="scadenze-content">
+                                <div>
+                                    <a href="#!/profiloCapo/962192"><b>Simone</b></a>
+                                    ti ha inviato un sollecito per la tua scadenza della specialità di <i>Allevatore</i>
+                                </div>
+                                <div>
+                                    <md-icon aria-label="Warning" class="material-icons">warning</md-icon>
+                                    Scadenza: tra 18 giorni.
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <br>
+                        <div layout="row" layout-wrap>
+                            <div flex="100" class="scadenze-content">
+                                <div>
+                                    <a href="#!/profiloCapo/996139"><b>Luca</b></a>
+                                    ha confermato la tua scadenza per la specialità di <i>Allevatore</i>
+                                </div>
+                                <div>
+                                    <md-icon aria-label="Check" class="material-icons">check_box</md-icon>
+                                    Dare da mangiare al gatto
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- NOTOFICHE CAPO -->
+                    <div ng-if="info.user.ruolo == 'capo'">
+                        <div layout="row" layout-wrap>
+                            <div flex="30">
+                                <img class="media-object img-responsive listaSpecialita img-scadenze"
+                                     ng-src="../images/Musicista.jpg">
+                            </div>
+                            <div flex="70" class="scadenze-content">
+                                <div>
+                                    <a href="#!/profiloRagazzo/1337952"><b>Lorenzo</b></a>
+                                    ha conquistato la specialità di <i>Musicista</i>
+                                </div>
+                                <div>
+                                    2 giorni fa
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <br>
+                        <div layout="row" layout-wrap>
+                            <div flex="100" class="scadenze-content">
+                                <div>
+                                    <a href="#!/profiloRagazzo/1239822"><b>Federico</b></a>
+                                    ha mancato la sua scadenza per la specialità di <i>Allevatore</i>
+                                </div>
+                                <div>
+                                    <md-icon aria-label="Warning" class="material-icons">warning</md-icon>
+                                    Dare da mangiare al coniglio
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <!-- CONTENUTO SE SI APRONO GLI EVENTI -->
+                <div ng-controller="EventCtrl" ng-if="data.menu == 'events' && isLogged() ">
+                    <div ng-repeat="evento in dati.eventi  | orderBy:'id'">
+                        <div ng-if="evento.tipo == 'single'">
+                            <b>{{evento.titolo}}</b> - <i>{{evento.luogo}}</i> - Presenti: {{evento.presenti}}
+                            <br>
+                            {{evento.giornoInizio}} {{evento.dataInizio}} dalle ore {{evento.oraInizio}} alle
+                            {{evento.oraFine}}
+                        </div>
+                        <div ng-if="evento.tipo == 'range'">
+                            <b>{{evento.titolo}}</b> - <i>{{evento.luogo}}</i> - Presenti: {{evento.presenti}}
+                            <br>
+                            Da {{evento.giornoInizio}} {{evento.dataInizio}} a {{evento.giornoFine}} {{evento.dataFine}}
+                        </div>
+                        <br>
+                        <md-divider ng-if="!$last"></md-divider>
+                        <br>
+                    </div>
+                </div>
+
+
+            </md-content>
+        </md-sidenav>
+    </section>
+
+</div>
+
+</body>
+</html>

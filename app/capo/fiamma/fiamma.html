@@ -1,0 +1,41 @@
+<div ng-controller="myAppFiammaCtrl" ng-cloak>
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="50" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Assegnazione fiamma</span>
+                        <span class="md-subhead">Fiamma detenuta dalla Sq: <b>{{data.oldFiamma}}</b></span>
+                    </md-card-title-text>
+                    <hr>
+                </md-card-title>
+
+
+                <!-- ASSEGNAZIONE FIAMMA -->
+                <div class="card-content">
+                    <div>Puoi decidere a quale squadriglia assegnare la fiamma (premio alla migliore squadriglia)
+                        selezionandola e salvando.
+                    </div>
+                    <br>
+
+                    <md-radio-group ng-model="data.newFiamma">
+                        <md-radio-button class="md-primary" ng-repeat="squadriglia in dati.squadriglie | orderBy:'nome'"
+                                         value="{{squadriglia.nome}}">
+                            <b ng-style="{ 'background-color': squadriglia.primary, 'color': squadriglia.accent, 'padding' : '8px', 'border-radius' : '2px'}">{{squadriglia.nome}}
+                                <md-icon aria-label="Flag" class="material-icons" ng-if="squadriglia.fiamma == true">
+                                    flag
+                                </md-icon>
+                            </b></md-radio-button>
+                    </md-radio-group>
+                    <span class="md-subhead">Assegna la fiamma alla Sq: <b><span
+                            class="radioValue">{{data.newFiamma}}</span></b></span>
+                    <br>
+                </div>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ng-click="salvaFiamma()" class="md-raised md-primary">Salva</md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+</div>
+

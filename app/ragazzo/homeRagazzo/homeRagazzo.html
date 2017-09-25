@@ -1,0 +1,167 @@
+<md-content class="md-padding" layout-xs="column" layout="row" ng-if="isLogged()">
+    <div flex-xs flex-gt-xs="50" layout="column">
+
+
+        <!-- PROSSIMO EVENTO -->
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Prossimo evento</span>
+                </md-card-title-text>
+            </md-card-title>
+            <br>
+            <div class="card-content">
+                <div ng-repeat="evento in dati.eventi  | orderBy:'id'" ng-if="$first">
+                    <div ng-if="evento.tipo == 'single'">
+                        <b>{{evento.titolo}}</b> - <i>{{evento.luogo}}</i> - Presenti: {{evento.presenti}}
+                        <br>
+                        {{evento.giornoInizio}} {{evento.dataInizio}} dalle ore {{evento.oraInizio}} alle
+                        {{evento.oraFine}}
+                    </div>
+                    <div ng-if="evento.tipo == 'range'">
+                        <b>{{evento.titolo}}</b> - <i>{{evento.luogo}}</i> - Presenti: {{evento.presenti}}
+                        <br>
+                        Da {{evento.giornoInizio}} {{evento.dataInizio}} a {{evento.giornoFine}} {{evento.dataFine}}
+                    </div>
+                    <br>
+                </div>
+            </div>
+
+        </md-card>
+
+
+        <!-- PROSSIME SCADENZE -->
+        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Prossime scadenze</span>
+                    <span class="md-subhead">Qui vedrai solo quelle future, se il ragazzo loggato ne possiede.</span>
+                </md-card-title-text>
+            </md-card-title>
+            <br>
+            <div class="card-content">
+                <div layout="row" layout-wrap ng-repeat="scadenza in dati.scadenze  | orderBy:deadline"
+                     ng-if="scadenza.deadline >= 0 && scadenza.conferma != true && scadenza.ragazzo == info.user.codice">
+                    <div flex="30" ng-repeat="specialita in dati.specialita"
+                         ng-if="specialita.nome == scadenza.nome_specialita">
+                        <a href="#!/visualizzaCartaSpecialita/{{scadenza.carta_spec}}">
+                            <img class="media-object img-responsive listaSpecialita img-scadenze"
+                                 ng-src="../{{specialita.img_url}}">
+                        </a>
+                    </div>
+                    <div flex="70" class="scadenze-content">
+                        <div>
+                            <a href="#!/profiloRagazzo/{{utente.codice}}"><b>{{scadenza.nome_ragazzo}}</b></a> -
+                            {{scadenza.nome_specialita}}
+                        </div>
+
+                        <div>
+                            <i>{{scadenza.azione}}</i>
+                        </div>
+                        <div layout="row" flex="100" layout-align="space-between">
+                            <div>
+                                Scadenza: tra {{scadenza.deadline}} giorni.
+                            </div>
+
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <md-card-actions layout="row" layout-align="end center">
+            </md-card-actions>
+        </md-card>
+
+
+        <!-- NEWSFEED -->
+        <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Notizie dal Reparto</span>
+                </md-card-title-text>
+            </md-card-title>
+
+            <!-- POST 1 -->
+            <md-card-header>
+                <md-card-avatar>
+                    <img class="img-profile-card" src="../images/1239822.jpg"/>
+                </md-card-avatar>
+                <md-card-header-text>
+                    <div layout="row" layout-wrap>
+                        <div flex="5">
+                        </div>
+                        <div flex="95">
+                            <a href="#!/profiloRagazzo/1239822">
+                                <b><span class="md-title">Federico</span></b>
+                            </a>
+                            <br>
+                            <span class="md-subhead">3 ore fa</span>
+                        </div>
+                    </div>
+
+                </md-card-header-text>
+            </md-card-header>
+            <img src="../images/gatto.jpg" class="md-card-image" alt="Washed Out">
+            <md-card-content>
+                <p>
+                    Per la mia <a href="#!/visualizzaCartaSpecialita/-Kolw5Xm7y4mQzZGSSrW"><b>Specialità di
+                    Allevatore</b></a> dovevo <i>dare da mangiare al gatto</i> ma forse gliene ho dato troppo!
+                    Si è abbuffato e adesso non ce la fa più!
+                </p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button" aria-label="Chat">
+                    <md-icon aria-label="Chat" class="material-icons">chat</md-icon>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Share">
+                    <md-icon aria-label="Share" class="material-icons">share</md-icon>
+                </md-button>
+            </md-card-actions>
+            <md-divider ng-if="!$last"></md-divider>
+
+
+            <!-- POST 2 -->
+            <md-card-header>
+                <md-card-avatar>
+                    <img class="img-profile-card" src="../images/default_profile.png"/>
+                </md-card-avatar>
+                <md-card-header-text>
+                    <div layout="row" layout-wrap>
+                        <div flex="5">
+                        </div>
+                        <div flex="95">
+                            <a href="#!/profiloRagazzo/1337952">
+                                <b><span class="md-title">Lorenzo</span></b>
+                            </a>
+                            <br>
+                            <span class="md-subhead">4 giorni fa</span>
+                        </div>
+                    </div>
+                </md-card-header-text>
+            </md-card-header>
+            <img src="../images/chitarra.png" class="md-card-image" alt="Washed Out">
+            <md-card-content>
+                <p>
+                    E come promesso, per la mia <a href="#!/visualizzaCartaSpecialita/-Kolw5Xm7y4mQzZGSSr1"><b>Specialità
+                    di Musicista</b></a> eccomi qui
+                    che suono la mia chitarra! Ci è voluto tanto esercizio ma ce l'ho fatta!
+                    <br>
+                    Ringrazio il mio <b>Maestro di Specialità <a href="#!/profiloRagazzo/1239822">Federico</a></b> per
+                    avermi aiutato a conquistare la Specialità che tanto desideravo ;)
+                </p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button" aria-label="Chat">
+                    <md-icon aria-label="Chat" class="material-icons">chat</md-icon>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Share">
+                    <md-icon aria-label="Share" class="material-icons">share</md-icon>
+                </md-button>
+            </md-card-actions>
+            <md-divider ng-if="!$last"></md-divider>
+
+
+        </md-card>
+
+    </div>
+</md-content>

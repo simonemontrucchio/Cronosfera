@@ -1,0 +1,88 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+
+    <div class="notifica feedback" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
+
+    <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Forma staff</span>
+                    <span class="md-subhead">del Reparto Stella Polare</span>
+                </md-card-title-text>
+                <hr>
+            </md-card-title>
+
+
+            <!-- FORMAZIONE STAFF -->
+            <div class="card-content">
+                <div>Puoi decidere quali capi facciano parte o meno dello staf, abilitandoli o disabilitandoli</div>
+                <br>
+
+                <div>Inserisci il codice socio, il nome o il cognome del singolo capo che vuoi abilitare o disabilitare
+                    (sotto sono momentaneamente elencati tutti, per sapere chi si può cercare).
+                </div>
+                <br><br>
+
+                <!--  INPUT PER CERCARE UN CAPO -->
+                <md-input-container md-no-float class="md-block">
+                    <label>Codice socio, nome o cognome del capo</label>
+                    <input id="ricerca" ng-model="modulo.ricerca" name="ricerca">
+                </md-input-container>
+                <br>
+
+
+                <!--  REPEAT PER MOSTRARE SOLO IL CAPO CON CODICE DIGITATO -->
+                <div layout="row" layout-wrap ng-repeat="utente in dati.utenti  | orderBy:'nome'"
+                     ng-if="modulo.ricerca != ''
+                            && utente.ruolo == 'capo'
+                            && (utente.codice.includes(modulo.ricerca)
+                            ||  utente.nome.toLowerCase().includes(modulo.ricerca.toLowerCase())
+                            ||  utente.cognome.toLowerCase().includes(modulo.ricerca.toLowerCase())    )">
+
+                    <div flex="50">
+                        <a href="#!/profiloCapo/{{utente.codice}}">
+                            <b>{{utente.nome}}</b> {{utente.cognome}}
+                        </a>
+                    </div>
+                    <div flex="40">
+                        <i>{{utente.codice}}</i>
+                    </div>
+                    <div flex>
+                        <md-switch name="toggle problematico" class="md-primary" md-no-ink ng-model="utente.staff"
+                                   id="{{utente.codice}}" aria-label="{{utente.codice}}">
+                        </md-switch>
+                    </div>
+                    <br><br>
+                </div>
+
+                <md-divider></md-divider>
+                <br>
+
+                <!--  REPEAT PER MOSTRARE TUTTI I CAPI NELL'APP -->
+                <div layout="row" layout-wrap ng-repeat="utente in dati.utenti  | orderBy:'nome'"
+                     ng-if="utente.ruolo == 'capo'">
+                    <div flex="50">
+                        <a href="#!/profiloCapo/{{utente.codice}}">
+                            <b>{{utente.nome}}</b> {{utente.cognome}}
+                        </a>
+                    </div>
+                    <div flex="40">
+                        <i>{{utente.codice}}</i>
+                    </div>
+                    <div flex>
+                        <md-switch class="md-primary" md-no-ink ng-model="utente.staff" id="{{utente.codice}}"
+                                   aria-label="{{utente.codice}}">
+                        </md-switch>
+                    </div>
+                    <br><br>
+                </div>
+
+
+            </div>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="salvaStaff()" class="md-raised md-primary" id="btn-salva">Salva</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</md-content>
+

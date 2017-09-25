@@ -1,0 +1,63 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+
+    <div class="notifica feedback" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
+
+    <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Conferma scadenze</span>
+                    <span class="md-subhead">delle specialità dei ragazzi</span>
+                </md-card-title-text>
+                <hr>
+            </md-card-title>
+
+
+            <div class="card-content">
+                <div>Qui di seguito vedrai solo le scadenze che hanno già superato la deadline e che non sono ancora state confermate. Per ogni ragazzo potrai confermarla abilitando il toggle.</div>
+                <br>
+
+                <div>Dopo aver salvato, le scadenze confermate non riappariranno in elenco.</div>
+                <br>
+
+
+
+                <div layout="row" layout-wrap ng-repeat="scadenza in dati.scadenze  | orderBy:['nome_ragazzo','deadline']" ng-if="scadenza.deadline <= 0 && scadenza.conferma != true">
+                        <div flex="30" ng-repeat="specialita in dati.specialita" ng-if="specialita.nome == scadenza.nome_specialita">
+                            <a href="#!/visualizzaCartaSpecialita/{{scadenza.carta_spec}}">
+                                <img class="media-object img-responsive listaSpecialita img-scadenze" ng-src="../{{specialita.img_url}}">
+                            </a>
+                        </div>
+                        <div flex="70" class="scadenze-content">
+                            <div >
+                                <a href="#!/profiloRagazzo/{{utente.codice}}"><b>{{scadenza.nome_ragazzo}}</b></a> - {{scadenza.nome_specialita}}
+                            </div>
+
+                            <div >
+                                <i>{{scadenza.azione}}</i>
+                            </div>
+                            <div layout="row" flex="100" layout-align="space-between">
+                                <div>
+                                    <!-- USO UN FILTRO CREATO CUSTOM PER RIMUOVERE IL "meno" DAVANTI AL NUMERO -->
+                                    Scadenza: {{scadenza.deadline | removeDash}} giorni fa.
+                                </div>
+                                <div>
+                                    <md-switch class="md-primary toggle-scadenza" md-no-ink ng-model="scadenza.confermaNew" id="{{scadenza.uid}}" aria-label="{{scadenza.uid}}" ></md-switch>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                </div>
+
+
+
+
+
+            </div>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-click="salvaScadenze()" class="md-raised md-primary" id="btn-salva">Salva</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</md-content>
+

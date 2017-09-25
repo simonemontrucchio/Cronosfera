@@ -1,0 +1,107 @@
+<div id="popupContainer" ng-controller="myAppListaSpecialitaCtrl">
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="50" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Scegli Specialità</span>
+                        <span class="md-subhead">Non vengono mostrate quelle per cui stai già lavorando</span>
+                    </md-card-title-text>
+                </md-card-title>
+
+                <div class="card-content">
+
+
+                    <!-- ELENCO SPECIALITA' CORRELATE AI BREVETTI DEL RAGAZZO SE NE HA -->
+                    <div ng-if="dati.correlate != ''">
+                        <div>Per portare a termine i tuoi <b>Brevetti</b> puoi scegliere tra le seguenti
+                            <b>Specialità</b>.
+                        </div>
+                        <br><br>
+
+
+                        <div layout="row" layout-wrap ng-repeat="specialita in dati.specialita | orderBy:'nome'"
+                             ng-if="dati.correlate.toLowerCase().includes(specialita.nome.toLowerCase())
+                                    && !dati.escludi.toLowerCase().includes(specialita.nome.toLowerCase())">
+
+                            <div flex="30">
+                                <img class="listaSpecialita" ng-src="../{{specialita.img_url}}">
+                            </div>
+
+                            <div flex="70">
+                                <span class="nome-specialita">{{specialita.nome}}</span>
+                                <br>
+                                <br ng-if="specialita.nome.length <= 20">
+
+                                <div layout="row" layout-align="space-between center">
+                                    <md-button class="md-primary md-raised" ng-click="showAlert($event,specialita.nome)"
+                                               aria-label="{{specialita.nome}}">Leggi
+                                    </md-button>
+                                    <md-button ng-click="scegliSpecialita(specialita.nome)" class="md-raised md-primary"
+                                               id="btn-salva">Scegli
+                                    </md-button>
+                                </div>
+
+                            </div>
+
+                            <div flex="100">
+                                <br>
+                            </div>
+                            <div flex="100">
+                                <md-divider ng-if="!$last"></md-divider>
+                            </div>
+                            <br>
+                        </div>
+                        <br><br>
+                        <div>Oppure scegli un'altra Specialità disponibile</div>
+                        <br><br>
+                    </div>
+
+
+
+
+                    <!-- ELENCO SPECIALITA' NON CORRELATE AI BREVETTI DEL RAGAZZO SE NE HA -->
+                    <div layout="row" layout-wrap ng-repeat="specialita in dati.specialita | orderBy:'nome'"
+                         ng-if="!dati.correlate.toLowerCase().includes(specialita.nome.toLowerCase())
+                          && !dati.escludi.toLowerCase().includes(specialita.nome.toLowerCase())">
+
+                        <div flex="30">
+                            <img class="listaSpecialita" ng-src="../{{specialita.img_url}}">
+                        </div>
+
+                        <div flex="70">
+                            <span class="nome-specialita">{{specialita.nome}}</span>
+                            <br>
+                            <br ng-if="specialita.nome.length <= 20">
+
+                            <div layout="row" layout-align="space-between center">
+                                <md-button class="md-primary md-raised" ng-click="showAlert($event,specialita.nome)"
+                                           aria-label="{{specialita.nome}}">Leggi
+                                </md-button>
+                                <md-button ng-click="scegliSpecialita(specialita.nome)" class="md-raised md-primary"
+                                           id="btn-salva">Scegli
+                                </md-button>
+                            </div>
+
+                        </div>
+
+                        <div flex="100">
+                            <br>
+                        </div>
+                        <div flex="100">
+                            <md-divider ng-if="!$last"></md-divider>
+                        </div>
+                        <br>
+                    </div>
+
+                </div>
+
+
+                <md-card-actions layout="row" layout-align="none">
+
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+
+</div>

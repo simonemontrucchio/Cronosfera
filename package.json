@@ -1,0 +1,26 @@
+{
+  "name": "Scrapbook",
+  "private": true,
+  "version": "0.0.0",
+  "description": "The scouts' social network",
+  "repository": "https://github.com/SoNet-2017/Scout-code.git",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.12.1",
+    "jshint": "^2.9.1",
+    "firebase-tools": "^2.2.1"
+  },
+  "scripts": {
+    "start-bsync": "browser-sync start --config bs-config.js",
+    "lint": "jshint app/**/*.js",
+
+    "fb-deploy": "firebase deploy",
+
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "assets": [
+    "assets",
+    "favicon.ico"
+  ],
+  "author": "Simone Montrucchio <simo.montrucchio@gmail.com>"
+}

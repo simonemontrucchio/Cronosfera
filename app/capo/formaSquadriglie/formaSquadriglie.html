@@ -1,0 +1,96 @@
+<div ng-controller="myAppFormaSquadriglieCtrl">
+    <md-content class="md-padding" layout-xs="column" layout="row">
+
+        <div class="notifica feedback" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
+
+        <div flex-xs flex-gt-xs="50" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Forma Squadriglie</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <div class="card-content">
+
+
+                    <div>Puoi decidere in quale squadriglia mettere ogni ragazzo. Non appena cliccherai sul radio button
+                        corrispondente alla squadriglia,
+                        la lista verrà riordinata in modo da avere tutti i componenti della stessa Squadriglia vicini e
+                        per nome.
+                    </div>
+                    <br> <br>
+                    <div layout="row">
+                        <div flex="40">
+                            <b>RAGAZZI</b>
+                        </div>
+                        <div flex>
+                            <b>F</b>
+                        </div>
+                        <div flex>
+                            <b>G</b>
+                        </div>
+                        <div flex>
+                            <b>I</b>
+                        </div>
+                        <div flex>
+                            <b>L</b>
+                        </div>
+                        <div flex>
+                            <b>T</b>
+                        </div>
+                    </div>
+
+                    <br>
+                    <md-divider ng-if="!$last"></md-divider>
+                    <br>
+
+
+                    <div layout="row" layout-wrap ng-repeat="utente in dati.utenti  | orderBy:['sq','nome']"
+                         ng-if="utente.ruolo == 'ragazzo'">
+                        <div flex="40">
+                            <a href="#!/profiloRagazzo/{{utente.codice}}"><b>{{utente.nome}}</b> {{utente.cognome[0]}}.</a>
+                        </div>
+                        <div flex>
+                            <md-radio-group ng-model="utente.sq" id="{{utente.codice}}">
+                                <md-radio-button value="Falchi" class="md-primary"
+                                                 aria-label="{{utente.codice}}"></md-radio-button>
+                            </md-radio-group>
+                        </div>
+                        <div flex>
+                            <md-radio-group ng-model="utente.sq" id="{{utente.codice}}">
+                                <md-radio-button value="Gazzelle" class="md-primary"
+                                                 aria-label="{{utente.codice}}"></md-radio-button>
+                            </md-radio-group>
+                        </div>
+                        <div flex>
+                            <md-radio-group ng-model="utente.sq" id="{{utente.codice}}">
+                                <md-radio-button value="Iene" class="md-primary"
+                                                 aria-label="{{utente.codice}}"></md-radio-button>
+                            </md-radio-group>
+                        </div>
+                        <div flex>
+                            <md-radio-group ng-model="utente.sq" id="{{utente.codice}}">
+                                <md-radio-button value="Lupi" class="md-primary"
+                                                 aria-label="{{utente.codice}}"></md-radio-button>
+                            </md-radio-group>
+                        </div>
+                        <div flex>
+                            <md-radio-group ng-model="utente.sq" id="{{utente.codice}}">
+                                <md-radio-button value="Tori" class="md-primary"
+                                                 aria-label="{{utente.codice}}"></md-radio-button>
+                            </md-radio-group>
+                            </td>
+                        </div>
+                    </div>
+
+
+                </div>
+                <br>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ng-click="salvaSquadriglie()" class="md-raised md-primary">Salva</md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+</div>
+

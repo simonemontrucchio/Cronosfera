@@ -1,0 +1,70 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+
+    <div class="notifica feedback" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
+    <div class="notifica errore" role="alert" ng-if="dati.error">{{ dati.error }}</div>
+
+    <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+
+            <form id="frmRegister" role="form" ng-submit="registrazioneRagazzo()" name="moduloRegistrazione">
+
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Registra nuovo ragazzo</span>
+                    </md-card-title-text>
+                    <hr>
+                </md-card-title>
+
+
+                <div class="card-content">
+
+                    <md-input-container class="md-block">
+                        <label>Codice socio</label>
+                        <input required id="codice" ng-model="dati.codice" name="codice" type="number">
+                        <div ng-messages="moduloRegistrazione.codice.$error">
+                            <div ng-message="required">Questo campo è obbligatorio e deve essere numerico.</div>
+                        </div>
+                    </md-input-container>
+
+                    <br><br><br>
+
+                    <md-input-container class="md-block">
+                        <label>Nome</label>
+                        <input required id="nome" ng-model="dati.nome" name="nome">
+                        <div ng-messages="moduloRegistrazione.nome.$error">
+                            <div ng-message="required">Questo campo è obbligatorio.</div>
+                        </div>
+                    </md-input-container>
+
+                    <br><br><br>
+
+                    <md-input-container class="md-block">
+                        <label>Cognome</label>
+                        <input required id="cognome" ng-model="dati.cognome" name="cognome">
+                        <div ng-messages="moduloRegistrazione.cognome.$error">
+                            <div ng-message="required">Questo campo è obbligatorio.</div>
+                        </div>
+                    </md-input-container>
+
+                    <br><br><br>
+
+                    <md-radio-group ng-model="dati.sesso">
+                        <md-radio-button class="md-primary" value="M">Maschio</md-radio-button>
+                        <md-radio-button class="md-primary" value="F">Femmina</md-radio-button>
+                    </md-radio-group>
+
+                    <br>
+
+                </div>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button type=submit" class="md-raised md-primary">REGISTRA</md-button>
+                </md-card-actions>
+            </form>
+
+        </md-card>
+    </div>
+
+
+</md-content>
+
+
