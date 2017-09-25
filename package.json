@@ -1,9 +1,9 @@
 {
-  "name": "Scrapbook",
+  "name": "Cronosfera",
   "private": true,
   "version": "0.0.0",
   "description": "The scouts' social network",
-  "repository": "https://github.com/SoNet-2017/Scout-code.git",
+  "repository": "https://github.com/simonemontrucchio/Cronosfera.git",
   "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.12.1",
