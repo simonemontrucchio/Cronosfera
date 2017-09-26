@@ -10,6 +10,42 @@
 }
 */
 
+.sfondo {
+    background-color: black;
+    height: 620px;
+}
+
+
+.sottotitolo {
+    color: #d4fcfd;
+    text-align: center;
+}
+
+.card-cronosfera {
+    background-color: black !important;
+    border-radius: 2px;
+}
+
+.cronosfera {
+    background: url(../images/cronosfera.gif) no-repeat center -60px;
+    background-size: 175%;
+    height:350px;
+ }
+
+input.data {
+    position: relative;
+    top: 150px;
+    text-align: center;
+    left: 88px;
+}
+
+md-input-container.md-default-theme.md-hue-1 .md-input, md-input-container.md-hue-1 .md-input {
+    color: white;
+    border-color: lightskyblue;
+    width: 40%;
+    font-size: 1.5em;
+}
+
 @media screen and (min-width: 350px) {
 
     .menu-laterale {

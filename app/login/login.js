@@ -65,7 +65,7 @@ app.controller('LoginCtrl', ['$scope', '$rootScope', 'Auth', '$location', '$log'
             console.log("Nel Login setto info a false, e vale: " + $rootScope.info.info);
 
             // login successful: redirect
-            $location.path("/homeCapo");
+            $location.path("/home");
 
             console.log("Login avvenuto. Fatto da: " + userId);
 

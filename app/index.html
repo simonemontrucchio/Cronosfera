@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Scrapbook</title>
+    <title>Cronosfera</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!-- FULL SCREEN MODE -->
@@ -69,7 +69,7 @@
     <script src="ragazzo/homeRagazzo/homeRagazzo.js"></script>
     <script src="capo/fiamma/fiamma.js"></script>
     <script src="login/login.js"></script>
-    <script src="capo/homeCapo/homeCapo.js"></script>
+    <script src="home/home.js"></script>
     <script src="components/authentication/authentication.js"></script>
     <script src="components/authentication/authentication-service.js"></script>
     <script src="capo/registrazioneRagazzo/registrazioneRagazzo.js"></script>
@@ -117,6 +117,7 @@
     <script src="ragazzo/sentiero/visualizzaCartaCompetenza/visualizzaCartaCompetenza.js"></script>
 
 
+
 </head>
 <body ng-app="myApp" ng-controller="AppCtrl1">
 
@@ -130,65 +131,6 @@
                     <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings">
                         <md-icon aria-label="Menu" class="material-icons">menu</md-icon>
                     </md-button>
-
-                    <!-- RICERCA -->
-                    <md-input-container md-no-float class="md-block md-hue-1">
-                        <input id="ricerca" ng-model="search.ricerca" name="ricerca" placeholder="Cerca utenti"
-                               class="search">
-                    </md-input-container>
-
-                    <md-button class="md-icon-button" aria-label="Events" ng-click="eventi()" ng-hide="isOpenRight()"
-                               class="md-primary" ng-if="isLogged()">
-                        <md-icon aria-label="Event" class="material-icons">event</md-icon>
-                    </md-button>
-
-                    <md-button class="md-icon-button" aria-label="Notifications" ng-click="notifiche()"
-                               ng-hide="isOpenRight()" class="md-primary" ng-if="isLogged()">
-                        <md-icon aria-label="Notifications" class="material-icons">notifications</md-icon>
-                    </md-button>
-
-
-                </div>
-
-                <!-- MOSTRA RISULTATI RICERCA -->
-                <div ng-controller="SearchCtrl" class="risultati-ricerca" ng-if="search.ricerca != ''">
-                    <div layout="row" layout-wrap ng-repeat="utente in dati.utenti  | orderBy:'nome'" ng-if="utente.codice.includes(search.ricerca)
-                                                                                                ||  utente.nome.toLowerCase().includes(search.ricerca.toLowerCase())
-                                                                                                ||  utente.cognome.toLowerCase().includes(search.ricerca.toLowerCase())"
-                         ng-click="vediProfilo(utente.codice)">
-
-                        <div flex="30">
-                            <img class="result-img" ng-src="{{utente.img}}">
-                        </div>
-                        <div flex="30" ng-if="utente.img == false">
-                            <img class="result-img" ng-src="../images/default_profile.png">
-                        </div>
-
-                        <div flex="40" class="result-text">
-                            <b>{{utente.nome}}</b>
-                            <br>
-                            {{utente.cognome}}
-                        </div>
-                        <div flex="30" ng-if="utente.ruolo == 'capo' && utente.staff == true" class="result-text-dx">
-                            <b>Staff</b>
-                            <br>
-                            <i>{{utente.codice}}</i>
-                        </div>
-                        <div flex="30" ng-if="utente.ruolo == 'capo' && utente.staff == false" class="result-text-dx">
-                            <b></b>
-                            <br>
-                            <i>{{utente.codice}}</i>
-                        </div>
-                        <div flex="30" ng-if="utente.ruolo == 'ragazzo'" class="result-text-dx">
-                            <b>{{utente.sq}}</b>
-                            <br>
-                            <i>{{utente.codice}}</i>
-                        </div>
-
-                        <br>
-                        <hr>
-                        <br>
-                    </div>
                 </div>
             </md-toolbar>
         </md-content>
@@ -210,12 +152,12 @@
 
 
                     <md-button ng-click="close()" class="md-icon-button" aria-label="Home">
-                        <a href="#!/homeCapo">
+                        <a href="#!/home">
                             <md-icon aria-label="Home" class="material-icons">home</md-icon>
                         </a>
                     </md-button>
 
-                    <h1 flex md-truncate><a class="logotype" href="#!/homeCapo" ng-click="close()">SCRAPBOOK</a></h1>
+                    <h1 flex md-truncate><a class="logotype" href="#!/home" ng-click="close()">SCRAPBOOK</a></h1>
 
                     <md-button ng-click="close()" class="md-icon-button" aria-label="Home">
                         <a href="#!/login">
@@ -266,7 +208,7 @@
 
 
                     <!-- MENU CAPO -->
-                    <ul ng-if="info.user.ruolo == 'capo'">
+                    <ul>
                         <li>
                             <a href="#!/riepilogoScadenze" ng-click="close()">
                                 <md-icon aria-label="Event Range" class="material-icons">event_range</md-icon>
@@ -323,34 +265,7 @@
                     </ul>
 
 
-                    <!-- MENU RAGAZZO -->
-                    <ul ng-if="info.user.ruolo == 'ragazzo'">
-                        <li>
-                            <a href="#!/aggiornaProfiloRagazzo/{{info.user.codice}}" ng-click="close()">
-                                <md-icon aria-label="Person" class="material-icons">person</md-icon>
-                                Modifica Profilo</a>
-                        </li>
-                        <md-divider ng-if="!$last"></md-divider>
-                        <li>
-                            <a href="#!/sentiero" ng-click="close()">
-                                <md-icon aria-label="Beenhere" class="material-icons">beenhere</md-icon>
-                                Sentiero</a>
-                        </li>
-                        <md-divider ng-if="!$last"></md-divider>
-                        <li>
-                            <a href="#" ng-click="close()" class="not-active">
-                                <md-icon aria-label="Forum" class="material-icons not-active">forum</md-icon>
-                                Conversazioni</a>
-                        </li>
-                        <md-divider ng-if="!$last"></md-divider>
-                        <li>
-                            <a href="#" ng-click="close()" class="not-active">
-                                <md-icon aria-label="Flag" class="material-icons not-active">flag</md-icon>
-                                Angolo di Squadriglia</a>
-                        </li>
 
-
-                    </ul>
 
                 </div>
 
@@ -359,153 +274,6 @@
 
         </md-sidenav>
 
-
-        <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
-
-
-            <md-toolbar class="md-primary">
-                <div class="md-toolbar-tools">
-
-                    <!-- TOOLBAR SE SI APRONO LE NOTIFICHE -->
-                    <div layout="row" ng-if="data.menu == 'notifications'">
-                        <md-icon flex="40" aria-label="Notifications" class="material-icons">notifications</md-icon>
-                        <h1 flex="60" style="white-space: nowrap;">Notifiche</h1>
-                    </div>
-
-                    <!-- TOOLBAR SE SI APRONO GLI EVENTI -->
-                    <div layout="row" ng-if="data.menu == 'events'">
-                        <md-icon flex="40" aria-label="Event" class="material-icons">event</md-icon>
-                        <h1 flex="60" style="white-space: nowrap;"> Prossimi eventi</h1>
-                    </div>
-                </div>
-            </md-toolbar>
-
-            <br><br><br>
-
-            <md-content ng-controller="RightCtrl" layout-padding>
-
-                <!-- CONTENUTO SE SI APRONO LE NOTIFICHE -->
-                <div ng-if="data.menu == 'notifications' && isLogged()">
-
-
-                    <!-- NOTOFICHE RAGAZZO -->
-                    <div ng-if="info.user.ruolo == 'ragazzo'">
-                        <div layout="row" layout-wrap>
-                            <div flex="30">
-                                <img class="media-object img-responsive listaSpecialita img-scadenze"
-                                     ng-src="../images/Allevatore.jpg">
-                            </div>
-                            <div flex="70" class="scadenze-content">
-                                <div>
-                                    Specialità di Allevatore
-                                </div>
-
-                                <div>
-                                    <i>Dare da mangiare al cane</i>
-                                </div>
-                                <div layout="row" flex="100" layout-align="space-between">
-                                    <div>
-                                        Scadenza: tra 18 giorni.
-                                    </div>
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                        <md-divider ng-if="!$last"></md-divider>
-                        <br>
-                        <div layout="row" layout-wrap>
-                            <div flex="100" class="scadenze-content">
-                                <div>
-                                    <a href="#!/profiloCapo/962192"><b>Simone</b></a>
-                                    ti ha inviato un sollecito per la tua scadenza della specialità di <i>Allevatore</i>
-                                </div>
-                                <div>
-                                    <md-icon aria-label="Warning" class="material-icons">warning</md-icon>
-                                    Scadenza: tra 18 giorni.
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                        <md-divider ng-if="!$last"></md-divider>
-                        <br>
-                        <div layout="row" layout-wrap>
-                            <div flex="100" class="scadenze-content">
-                                <div>
-                                    <a href="#!/profiloCapo/996139"><b>Luca</b></a>
-                                    ha confermato la tua scadenza per la specialità di <i>Allevatore</i>
-                                </div>
-                                <div>
-                                    <md-icon aria-label="Check" class="material-icons">check_box</md-icon>
-                                    Dare da mangiare al gatto
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- NOTOFICHE CAPO -->
-                    <div ng-if="info.user.ruolo == 'capo'">
-                        <div layout="row" layout-wrap>
-                            <div flex="30">
-                                <img class="media-object img-responsive listaSpecialita img-scadenze"
-                                     ng-src="../images/Musicista.jpg">
-                            </div>
-                            <div flex="70" class="scadenze-content">
-                                <div>
-                                    <a href="#!/profiloRagazzo/1337952"><b>Lorenzo</b></a>
-                                    ha conquistato la specialità di <i>Musicista</i>
-                                </div>
-                                <div>
-                                    2 giorni fa
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <md-divider ng-if="!$last"></md-divider>
-                        <br>
-                        <div layout="row" layout-wrap>
-                            <div flex="100" class="scadenze-content">
-                                <div>
-                                    <a href="#!/profiloRagazzo/1239822"><b>Federico</b></a>
-                                    ha mancato la sua scadenza per la specialità di <i>Allevatore</i>
-                                </div>
-                                <div>
-                                    <md-icon aria-label="Warning" class="material-icons">warning</md-icon>
-                                    Dare da mangiare al coniglio
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-
-
-                <!-- CONTENUTO SE SI APRONO GLI EVENTI -->
-                <div ng-controller="EventCtrl" ng-if="data.menu == 'events' && isLogged() ">
-                    <div ng-repeat="evento in dati.eventi  | orderBy:'id'">
-                        <div ng-if="evento.tipo == 'single'">
-                            <b>{{evento.titolo}}</b> - <i>{{evento.luogo}}</i> - Presenti: {{evento.presenti}}
-                            <br>
-                            {{evento.giornoInizio}} {{evento.dataInizio}} dalle ore {{evento.oraInizio}} alle
-                            {{evento.oraFine}}
-                        </div>
-                        <div ng-if="evento.tipo == 'range'">
-                            <b>{{evento.titolo}}</b> - <i>{{evento.luogo}}</i> - Presenti: {{evento.presenti}}
-                            <br>
-                            Da {{evento.giornoInizio}} {{evento.dataInizio}} a {{evento.giornoFine}} {{evento.dataFine}}
-                        </div>
-                        <br>
-                        <md-divider ng-if="!$last"></md-divider>
-                        <br>
-                    </div>
-                </div>
-
-
-            </md-content>
-        </md-sidenav>
     </section>
 
 </div>

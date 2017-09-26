@@ -3,12 +3,12 @@
 
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyDUDFC04BUxoViarP3nA3sdXX2SmZRX-Z4",
-    authDomain: "scrapbook-5b34e.firebaseapp.com",
-    databaseURL: "https://scrapbook-5b34e.firebaseio.com",
-    projectId: "scrapbook-5b34e",
-    storageBucket: "scrapbook-5b34e.appspot.com",
-    messagingSenderId: "806919547565"
+    apiKey: "AIzaSyDpA_SgLvx9ebqS8XH4j076CdyGO20B61I",
+    authDomain: "cronosfera-9b58a.firebaseapp.com",
+    databaseURL: "https://cronosfera-9b58a.firebaseio.com",
+    projectId: "cronosfera-9b58a",
+    storageBucket: "cronosfera-9b58a.appspot.com",
+    messagingSenderId: "441218176032"
 };
 firebase.initializeApp(config);
 
@@ -17,11 +17,10 @@ var app = angular.module('myApp', [
     'ngRoute',
     "firebase",
     'myAppSentiero',
-    'myAppHomeRagazzo',
     'myAppFiamma',
     'myAppLogin',
     'myAppAuthentication',
-    'myAppHomeCapo',
+    'myAppHome',
     'myAppRegistrazioneRagazzo',
     'myAppSquadriglia',
     'myAppListaSpecialita',
@@ -69,7 +68,7 @@ app.config(['$locationProvider', '$routeProvider', '$mdThemingProvider', functio
 
     $locationProvider.hashPrefix('!');
     $routeProvider.otherwise({
-        redirectTo: '/homeCapo'
+        redirectTo: '/home'
     });
 }]);
 
@@ -86,33 +85,13 @@ app.run(["$rootScope", "$location", function ($rootScope, $location) {
 
 app.controller('LogCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth', '$location', 'Scadenza', function ($scope, $rootScope, Utente, $firebaseAuth, $location, Scadenza) {
 
-    //PER LA RICERCA
-    $rootScope.search = {};
-    $rootScope.search.ricerca = "";
+
 
     //variabile che permette di scaricare i dati dell'utente loggato solo una volta all'avvio dell'app
     $rootScope.info = {};
     $rootScope.info.info = false;
     //console.log("Nel LogCtrl setto info a false, e vale: " +  $rootScope.info.info);
 
-
-    //AGGIORNO DEADLINE
-    $scope.dati = {};
-    $scope.dati.today = new Date();
-    var oggi = new Date($scope.dati.today.getFullYear(), $scope.dati.today.getMonth(), $scope.dati.today.getDate());
-    var oneDay = 24 * 60 * 60 * 1000;	// hours*minutes*seconds*milliseconds
-
-    $scope.dati.scadenze = Scadenza.getData();
-    $scope.dati.scadenze.$loaded().then(function () {
-        for (var i = 0; i < $scope.dati.scadenze.length; i++) {
-            var data = new Date($scope.dati.scadenze[i].data);
-            var deadline = Math.abs((data.getTime() - oggi.getTime()) / (oneDay));
-            if (data < oggi) {
-                deadline = "-" + deadline;
-            }
-            Scadenza.aggiornaDeadline($scope.dati.scadenze[i].$id, deadline);
-        }
-    });
 
 
     //MOSTRA ALCUNE PARTI SOLO SE SI E' LOGGATI
@@ -231,45 +210,6 @@ app.controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
     };
 });
 
-app.controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-    $scope.close = function () {
-        // Component lookup should always be available since we are not using `ng-if`
-        $mdSidenav('right').close()
-            .then(function () {
-                $log.debug("close RIGHT is done");
-            });
-    };
-});
 
-
-//METTE TUTTI GLI EVENTI NELLA SIDENAV
-app.controller('EventCtrl', ['$scope', '$rootScope', 'Evento', function ($scope, $rootScope, Evento) {
-
-    //initialize variables
-    $scope.dati = {};
-    $scope.dati.feedback = "";
-
-    $scope.dati.eventi = Evento.getData();
-    $scope.dati.eventi.$loaded().then(function () {
-    });
-}]);
-
-
-
-//TROVA I RISULTATI DELLA RICERCA NELLA TOOLBAR
-app.controller('SearchCtrl', ['$scope', '$rootScope', 'Utente', '$location', function ($scope, $rootScope, Utente, $location) {
-
-    //initialize variables
-    $scope.dati = {};
-    $scope.dati.utenti = Utente.getData();
-
-    $scope.vediProfilo = function (codice) {
-        $rootScope.search.ricerca = "";
-        document.activeElement.blur();
-        $location.path("/profiloCapo/" + codice);
-    };
-
-
-}]);
 
 
