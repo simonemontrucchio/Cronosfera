@@ -1,12 +1,16 @@
 <div class="sfondo">
-    <div class="sottotitolo">Inserisci la data nella Cronosfera e premi Invio</div>
-    <div class="cronosfera">
-        <md-input-container md-no-float class="md-block md-hue-1">
-            <input id="data" ng-model="search.ricerca" name="data" placeholder="dd/mm/yyy"
-                   class="data">
-        </md-input-container>
-    </div>
+    <form id="frmData" role="form" ng-submit="ottieniGPS()">
+        <!--
+        <div class="sottotitolo">Inserisci la data nella Cronosfera e premi Invio</div>
+        -->
+        <div class="cronosfera">
+            <md-input-container md-no-float class="md-block md-hue-1">
+                <input id="data" ng-model="dati.data" name="data" placeholder="dd/mm/yyy" class="data">
+            </md-input-container>
+        </div>
+        <md-card-actions layout="row" layout-align="center center">
+            <md-button type="submit" class="md-primary md-raised vai">VAI</md-button>
+        </md-card-actions>
+
+    </form>
 </div>
-
-
-

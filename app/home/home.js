@@ -22,17 +22,25 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 
-app.controller('myAppHomeCtrl', ['$scope', '$rootScope', 'Evento', '$firebaseAuth', '$location', 'Utente', 'Scadenza', 'Specialita', function ($scope, $rootScope, Evento, $firebaseAuth, $location, Utente, Scadenza, Specialita) {
+app.controller('myAppHomeCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$location', function ($scope, $rootScope, $firebaseAuth, $location) {
 
     //initialize variables
     $scope.dati = {};
     $scope.dati.feedback = "";
 
-    //SCARICO TUTTI I DATI
-    $scope.dati.utenti = Utente.getData();
-    $scope.dati.scadenze = Scadenza.getData();
-    $scope.dati.specialita = Specialita.getData();
-    $scope.dati.eventi = Evento.getData();
+
+
+    $scope.ottieniGPS = function () {
+        console.log("ho premuto su VAI");
+
+
+        if ($scope.dati.data == "11/09/2001") {
+            console.log("11 settembre");
+            $location.path("/luogoTappa/001");
+        }
+    };
+
+
 
 
 

@@ -1,0 +1,35 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+            <form id="frmLuogo" role="form" ng-submit="ottieniEvento()">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Dopo esservi recati qui</span>
+                        <span class="md-subhead"><b>{{info.tappaAttuale.coordinate}}</b></span>
+                    </md-card-title-text>
+                    <hr>
+                </md-card-title>
+
+
+                <!-- ASSEGNAZIONE FIAMMA -->
+                <div class="card-content">
+                    <div>{{info.tappaAttuale.tag}}
+                    </div>
+                    <br><br>
+                    <div >
+                        <md-input-container class="md-block">
+                            <input id="luogo" ng-model="dati.luogo" name="luogo" placeholder="Inserite il nome esatto del luogo scoperto" class="">
+                        </md-input-container>
+                    </div>
+                    <br><br>
+                </div>
+
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button type="submit" class="md-raised md-primary">MOSTRA EVENTO</md-button>
+                </md-card-actions>
+
+            </form>
+        </md-card>
+    </div>
+</md-content>
+

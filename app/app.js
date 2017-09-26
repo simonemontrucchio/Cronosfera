@@ -13,18 +13,18 @@ var config = {
 firebase.initializeApp(config);
 
 var app = angular.module('myApp', [
-    'ngMaterial',
-    'ngRoute',
-    "firebase",
+        'ngMaterial',
+        'ngRoute',
+        "firebase",
     'myAppSentiero',
-    'myAppFiamma',
-    'myAppLogin',
-    'myAppAuthentication',
-    'myAppHome',
+        'myAppLuogoTappa',
+        'myAppLogin',
+        'myAppAuthentication',
+        'myAppHome',
     'myAppRegistrazioneRagazzo',
     'myAppSquadriglia',
     'myAppListaSpecialita',
-    'myAppRegistration',
+        'myAppRegistration',
     'myAppSquadriglia',
     'myAppFormaSquadriglie',
     'myAppStaff',
@@ -32,7 +32,7 @@ var app = angular.module('myApp', [
     'myAppAssegnaTappa',
     'myAppSpecialita',
     'myAppCartaSpecialita',
-    'myAppProfilo',
+        'myAppProfilo',
     'myAppUtente',
     'myAppConfermaScadenze',
     'myAppRiepilogoScadenze',
@@ -42,13 +42,13 @@ var app = angular.module('myApp', [
     'myAppMete',
     'myAppImpegni',
     'myAppMeteImpegni',
-    'myApp.fileUpload',
-    'myAppBrevetti',
+        'myApp.fileUpload',
+        'myAppTappa',
     'myAppListaBrevetti',
     'myAppCartaCompetenza',
     'myAppSceltaMaestroBrev',
     'myAppVisualizzaCartaCompetenza',
-    'myAppAggiornaProfilo'
+        'myAppAggiornaProfilo'
 ]);
 
 
