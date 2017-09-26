@@ -1,19 +1,16 @@
 <md-content class="md-padding" layout-xs="column" layout="row">
-    <div flex-xs flex-gt-xs="50" layout="column" ng-controller="aggiornaProfiloRagazzoCtrl as $ctrl">
+    <div flex-xs flex-gt-xs="50" layout="column" ng-controller="aggiornaProfiloCtrl as $ctrl">
 
         <form id="frmFoto" role="form" ng-submit="salvaFoto()">
             <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
                 <md-card-title>
                     <md-card-title-text>
-                        <span class="md-headline">Foto profilo</span>
-
+                        <span class="md-headline">Foto di squadra</span>
+                        <span class="md-subhead"><b>{{info.user.nome}}</b></span>
                     </md-card-title-text>
                 </md-card-title>
                 <br>
                 <div class="card-content">
-                    <div class="knot rot-dx"></div>
-                    <div class="knot rot-sx"></div>
-
                     <div class="md-media-lg card-media ">
                         <img class="img-profile" ng-src="{{info.user.img}}">
                     </div>

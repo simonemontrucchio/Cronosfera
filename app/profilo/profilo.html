@@ -1,0 +1,39 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+
+    <div class="alert alert-danger alert-dismissible" role="alert" ng-if="error">{{ error.message }}</div>
+    <div class="notifica feedback" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
+
+    <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+
+
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Profilo della squadra</span>
+                    <span class="md-subhead"><b>{{dati.user.nome}}</b></span>
+                </md-card-title-text>
+
+            </md-card-title>
+
+            <div class="card-content">
+                <div>
+                    Email: {{dati.user.email}}
+                </div>
+                <br><br>
+
+
+                <div class="md-media-lg card-media ">
+                    <img class="img-profile" ng-src="{{dati.user.img}}">
+                </div>
+            </div>
+            <md-card-actions layout="row" layout-align="end center">
+                <a href="#!/aggiornaProfilo/{{info.user.nome}}">
+                    <md-button class="md-raised md-primary" ng-if="dati.user.nome == info.user.nome">CAMBIA FOTO
+                    </md-button>
+                </a>
+            </md-card-actions>
+
+        </md-card>
+
+    </div>
+</md-content>

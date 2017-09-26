@@ -18,47 +18,14 @@ angular.module('myAppUtente.utentiService', [])
                 return $firebaseArray(ref);
             },
 
-            aggiornaStaff: function (uuid, checked) {
-                console.log("sono entrato nello staff service, aggiorna staff");
-                console.log("NEL SERVICE - uuid: " + uuid);
-                console.log("NEL SERVICE - checked: " + checked);
 
-                var ref = firebase.database().ref().child("utenti").child(uuid);
-                // create a synchronized array
-                if (checked == 'true') {
-                    ref.update({
-                        staff: true
-                    });
-                }
-                else if (checked == 'false') {
-                    ref.update({
-                        staff: false
-                    });
-                }
-            },
-
-            aggiornaSq: function (uuid, newSq) {
-                console.log("sono entrato nello sq service, aggiorna sq");
-                console.log("NEL SERVICE - uuid: " + uuid);
-                console.log("NEL SERVICE - newSq: " + newSq);
-
-                var ref = firebase.database().ref().child("utenti").child(uuid);
+            aggiornaFoto: function (codice, nuovaFoto) {
+                var ref = firebase.database().ref().child("utenti").child(codice);
                 // create a synchronized array
                 ref.update({
-                    sq: newSq
+                    img: nuovaFoto
                 });
-            },
 
-            aggiornaTappa: function (uuid, newTappa) {
-                console.log("sono entrato nello sq service, aggiorna tappa");
-                console.log("NEL SERVICE - uuid: " + uuid);
-                console.log("NEL SERVICE - newSq: " + newTappa);
-
-                var ref = firebase.database().ref().child("utenti").child(uuid);
-                // create a synchronized array
-                ref.update({
-                    tappa: newTappa
-                });
             },
 
 
@@ -88,19 +55,17 @@ angular.module('myAppUtente.utentiService', [])
              * REGISTRAZIONE NUOVO CAPO
              *
              * **/
-            registerNewUserInfo: function (userId, nome, cognome, email, codice) {
+            registerNewUserInfo: function (userId, nome, componenti, email) {
                 //add the user to list of users and set the logged value to true
                 var ref = firebase.database().ref().child("utenti").child(userId);
                 // create a synchronized array
                 ref.set({
                     nome: nome,
-                    cognome: cognome,
+                    componenti: componenti,
                     email: email,
-                    codice: codice,
                     logged: false,
-                    staff: false,
-                    img: false,
-                    ruolo: "capo",
+                    img: "../images/default_profile.png",
+                    ruolo: "squadra",
                 });
             }
 

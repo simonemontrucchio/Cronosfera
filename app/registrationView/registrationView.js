@@ -31,14 +31,6 @@ app.controller('myAppRegistrationViewCtrl', ['$scope', '$rootScope', 'Auth', 'Ut
             $scope.control = {};
             $scope.control.utenti = Utente.getData();
             $scope.control.utenti.$loaded().then(function () {
-                for (var i = 0; i < $scope.control.utenti.length; i++) {
-                    console.log("avvio il for per controllare utente esistenti");
-                    if ($scope.control.utenti[i].ruolo == 'capo' && $scope.control.utenti[i].codice == $scope.user.codice) {
-                        $scope.dati.error = "UTENTE GIA' ESISTENTE!";
-                        esistente = true;
-                        console.log("metto esistente su true");
-                    }
-                }
                 if (esistente == false) {
                     console.log("esistente vale false, registro");
                     //create a new user with specified email and password
@@ -48,7 +40,7 @@ app.controller('myAppRegistrationViewCtrl', ['$scope', '$rootScope', 'Auth', 'Ut
                             //(the reason is that we cannot write in the database if we are not logged in ... it is not the best way of doing it but it is ok for our prototype)
                             Auth.$signInWithEmailAndPassword($scope.user.email, $scope.user.password).then(function (internalFirebaseUser) {
                                 var userId = internalFirebaseUser.uid;
-                                Utente.registerNewUserInfo(userId, $scope.user.nome, $scope.user.cognome, $scope.user.email, $scope.user.codice);
+                                Utente.registerNewUserInfo(userId, $scope.user.nome, $scope.user.componenti, $scope.user.email);
 
                                 console.log("Registrazione avvenuta con successo");
                                 $scope.dati.error = "Registrazione avvenuta con successo";
@@ -62,10 +54,10 @@ app.controller('myAppRegistrationViewCtrl', ['$scope', '$rootScope', 'Auth', 'Ut
                                 $rootScope.info = {};
                                 $rootScope.info.user = Utente.getUserInfo($firebaseAuth().$getAuth().uid);
 
-
-                                console.log("Login avvenuto con successo, redirect su homeCapo");
                                 // login successful: redirect to
-                                $location.path("/homeCapo");
+                                var nomeSquadra = $scope.user.nome;
+                                console.log("/aggiornaProfilo/"+ nomeSquadra);
+                                $location.path("/aggiornaProfilo/"+ nomeSquadra);
 
                             }).catch(function (error) {
                                 $scope.error = error;
@@ -83,3 +75,4 @@ app.controller('myAppRegistrationViewCtrl', ['$scope', '$rootScope', 'Auth', 'Ut
         }
     };
 }]);
+

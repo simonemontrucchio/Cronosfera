@@ -19,11 +19,11 @@
 
     <!-- BARRA INDIRIZZI COLORATA -->
     <!-- Chrome, Firefox OS and Opera -->
-    <meta name="theme-color" content="#4CAF50">
+    <meta name="theme-color" content="#03A9F4">
     <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#4CAF50">
+    <meta name="msapplication-navbutton-color" content="#03A9F4">
     <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="#4CAF50">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#03A9F4">
 
 
     <!-- Angular Material style sheet -->
@@ -88,19 +88,17 @@
     <script src="capo/assegnaTappa/assegnaTappa.js"></script>
     <script src="components/specialita/specialita.js"></script>
     <script src="components/specialita/specialita-service.js"></script>
-    <script src="capo/profiloCapo/profiloCapo.js"></script>
+    <script src="profilo/profilo.js"></script>
     <script src="capo/confermaScadenze/confermaScadenze.js"></script>
     <script src="components/specialita/scadenze-service.js"></script>
     <script src="components/cartaSpecialita/cartaSpecialita.js"></script>
     <script src="components/cartaSpecialita/cartaSpecialita-service.js"></script>
     <script src="components/cartaSpecialita/registrazione-cartaSpecialita-service.js"></script>
     <script src="capo/riepilogoScadenze/riepilogoScadenze.js"></script>
-    <script src="ragazzo/profiloRagazzo/profiloRagazzo.js"></script>
     <script src="ragazzo/sentiero/sceltaMaestro/sceltaMaestro.js"></script>
     <script src="ragazzo/sentiero/scadenzeCarta/scadenzeCarta.js"></script>
     <script src="ragazzo/sentiero/visualizzaCartaSpecialita/visualizzaCartaSpecialita.js"></script>
-    <script src="ragazzo/aggiornaProfilo/aggiornaProfilo.js"></script>
-    <script src="capo/aggiornaProfilo/aggiornaProfilo.js"></script>
+    <script src="aggiornaProfilo/aggiornaProfilo.js"></script>
     <script src="components/impegni/impegni.js"></script>
     <script src="components/impegni/impegni-service.js"></script>
     <script src="components/mete/mete.js"></script>
@@ -175,29 +173,20 @@
 
 
             <!-- Box personale -->
-            <a href="#!/profiloCapo/{{info.user.codice}}" ng-click="close()" ng-if="isLogged()">
+            <a href="#!/profilo/{{info.user.nome}}" ng-click="close()" ng-if="isLogged()">
                 <div layout="row" class="personal-box">
                     <div flex="none">
                         <img class="user-img" ng-src="{{info.user.img}}">
-                    </div>
-                    <div flex="none" ng-if="info.user.img == false">
-                        <img class="user-img" ng-src="../images/default_profile.png">
                     </div>
                     <div flex>
 
                         <div class="user-name">
                             <b>
                                 {{info.user.nome}}
-                                <br>
-                                {{info.user.cognome}}
                             </b>
-                            <br>
-                            <h5 ng-if="info.user.staff == true">
-                                Staff Stella Polare
-                            </h5>
-                            <h5 ng-if="info.user.ruolo == 'ragazzo' && info.user.sq != ''">
-                                Sq. {{info.user.sq}}
-                            </h5>
+                        </div >
+                        <div class="user-componenti">
+                            {{info.user.componenti}}
                         </div>
 
                     </div>

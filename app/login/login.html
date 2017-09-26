@@ -58,7 +58,7 @@
                 <md-card-title>
                     <md-card-title-text>
                         <span class="md-headline">Esci dal tuo account</span>
-                        <span class="md-subhead">{{info.user.nome}} {{info.user.cognome}}</span>
+                        <span class="md-subhead">{{info.user.nome}}</span>
                     </md-card-title-text>
                 </md-card-title>
                 <div class="card-content">
@@ -73,8 +73,7 @@
             <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-if="!isLogged()">
                 <md-card-title>
                     <md-card-title-text>
-                        <span class="md-headline">Oppure</span>
-                        <span class="md-subhead">Registra un nuovo account capo</span>
+                        <span class="md-headline">Crea una nuova squadra</span>
                     </md-card-title-text>
                 </md-card-title>
 
@@ -83,7 +82,7 @@
 
                 <md-card-actions layout="row" layout-align="end center">
                     <a href="#!/registrationView">
-                        <md-button class="md-raised md-primary">REGISTRA</md-button>
+                        <md-button class="md-raised md-primary">CREA</md-button>
                     </a>
                 </md-card-actions>
             </md-card>

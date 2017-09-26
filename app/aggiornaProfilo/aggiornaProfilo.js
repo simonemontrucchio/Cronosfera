@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('myAppAggiornaProfiloCapo', [
+var app = angular.module('myAppAggiornaProfilo', [
     'ngMaterial',
     'ngRoute',
     'myAppAuthentication',
@@ -8,9 +8,9 @@ var app = angular.module('myAppAggiornaProfiloCapo', [
 ]);
 
 app.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.when('/aggiornaProfiloCapo/:codiceCapo', {
-        templateUrl: 'capo/aggiornaProfilo/aggiornaProfilo.html',
-        controller: 'aggiornaProfiloCapoCtrl',
+    $routeProvider.when('/aggiornaProfilo/:nomeSquadra', {
+        templateUrl: 'aggiornaProfilo/aggiornaProfilo.html',
+        controller: 'aggiornaProfiloCtrl',
         resolve: {
             // controller will not be loaded until $requireSignIn resolves
             // Auth refers to our $firebaseAuth wrapper in the factory below
@@ -23,7 +23,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     })
 }])
 
-app.controller('aggiornaProfiloCapoCtrl', ['$scope', '$rootScope', 'RegistrazioneRagazzoService', 'Utente', '$firebaseAuth', '$location', '$routeParams', '$firebaseStorage', function ($scope, $rootScope, RegistrazioneRagazzoService, Utente, $firebaseAuth, $location, $routeParams, $firebaseStorage) {
+app.controller('aggiornaProfiloCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth', '$location', '$routeParams', '$firebaseStorage', function ($scope, $rootScope, Utente, $firebaseAuth, $location, $routeParams, $firebaseStorage) {
     $scope.dati = {};
     $scope.dati.uploading = "";
 
@@ -60,7 +60,7 @@ app.controller('aggiornaProfiloCapoCtrl', ['$scope', '$rootScope', 'Registrazion
 
     $scope.aggiornaImmagineProfilo = function () {
         console.log("aggiorno la foto nel databse");
-        RegistrazioneRagazzoService.aggiornaFoto($rootScope.info.user.$id, $scope.imgPath);
+        Utente.aggiornaFoto($rootScope.info.user.$id, $scope.imgPath);
         $scope.dati.uploading = "";
     };
 

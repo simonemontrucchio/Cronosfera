@@ -32,15 +32,13 @@ var app = angular.module('myApp', [
     'myAppAssegnaTappa',
     'myAppSpecialita',
     'myAppCartaSpecialita',
-    'myAppProfiloCapo',
+    'myAppProfilo',
     'myAppUtente',
     'myAppConfermaScadenze',
     'myAppRiepilogoScadenze',
-    'myAppProfiloRagazzo',
     'myAppSceltaMaestro',
     'myAppScadenzeCarta',
     'myAppVisualizzaCartaSpecialita',
-    'myAppAggiornaProfiloRagazzo',
     'myAppMete',
     'myAppImpegni',
     'myAppMeteImpegni',
@@ -50,7 +48,7 @@ var app = angular.module('myApp', [
     'myAppCartaCompetenza',
     'myAppSceltaMaestroBrev',
     'myAppVisualizzaCartaCompetenza',
-    'myAppAggiornaProfiloCapo'
+    'myAppAggiornaProfilo'
 ]);
 
 
