@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 @import url('https://fonts.googleapis.com/css?family=Baloo&subset=latin-ext');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic');
+@import url('https://fonts.googleapis.com/css?family=Russo+One');
 
 /*
 @media (min-width: 0) and (max-width: 959px) and (orientation: landscape) {
@@ -36,7 +37,7 @@
 
 input.data {
     position: relative;
-    top: 196px;
+    top: 190px;
     text-align: center;
     left: 110px;
 }
@@ -143,8 +144,8 @@ a:visited {
 }
 
 a.logotype, a.logotype:visited, a.logotype:active, a.logotype:hover {
-    font-family: 'Baloo', cursive;
-    color: #f7f7f7 !important;
+    font-family: 'Russo One', sans-serif;
+    color: #212121 !important;
     font-size: 1.5em;
 }
 
