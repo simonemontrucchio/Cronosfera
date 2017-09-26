@@ -153,9 +153,9 @@
                 <div class="md-toolbar-tools">
 
 
-                    <md-button ng-click="close()" class="md-icon-button" aria-label="Home">
+                    <md-button ng-click="close()" class="md-icon-button" aria-label="restore">
                         <a href="#!/home">
-                            <md-icon aria-label="Home" class="material-icons">home</md-icon>
+                            <md-icon aria-label="Restore" class="material-icons">restore</md-icon>
                         </a>
                     </md-button>
 
@@ -175,7 +175,7 @@
             <!-- Box personale -->
             <a href="#!/profilo/{{info.user.nome}}" ng-click="close()" ng-if="isLogged()">
                 <div layout="row" class="personal-box">
-                    <div flex="none">
+                    <div flex="none" >
                         <img class="user-img" ng-src="{{info.user.img}}">
                     </div>
                     <div flex>
