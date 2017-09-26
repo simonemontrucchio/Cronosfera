@@ -19,24 +19,26 @@
 .sottotitolo {
     color: #d4fcfd;
     text-align: center;
+    position: relative;
+    top: 60px;
+    font-family: Roboto;
+    font-size: 1.1em;
 }
 
-.card-cronosfera {
-    background-color: black !important;
-    border-radius: 2px;
-}
 
 .cronosfera {
     background: url(../images/cronosfera.gif) no-repeat center -60px;
-    background-size: 175%;
-    height:350px;
+    background-size: 195%;
+    height: 500px;
+    position: relative;
+    top: 60px;
  }
 
 input.data {
     position: relative;
-    top: 150px;
+    top: 196px;
     text-align: center;
-    left: 88px;
+    left: 110px;
 }
 
 md-input-container.md-default-theme.md-hue-1 .md-input, md-input-container.md-hue-1 .md-input {

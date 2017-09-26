@@ -1,27 +1,12 @@
-<md-content class="md-padding sfondo" layout-xs="column" layout="row" ng-if="isLogged()">
-    <div flex-xs flex-gt-xs="50" layout="column">
-
-
-        <!-- PROSSIMO EVENTO -->
-        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch class="card-cronosfera">
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="sm-headline sottotitolo">Inserisci la data nella Cronosfera e premi Invio</span>
-                </md-card-title-text>
-            </md-card-title>
-
-            <div class="card-content cronosfera">
-                <md-input-container md-no-float class="md-block md-hue-1">
-                    <input id="data" ng-model="search.ricerca" name="data" placeholder="dd/mm/yyy"
-                           class="data">
-                </md-input-container>
-            </div>
-        </md-card>
-
+<div class="sfondo">
+    <div class="sottotitolo">Inserisci la data nella Cronosfera e premi Invio</div>
+    <div class="cronosfera">
+        <md-input-container md-no-float class="md-block md-hue-1">
+            <input id="data" ng-model="search.ricerca" name="data" placeholder="dd/mm/yyy"
+                   class="data">
+        </md-input-container>
     </div>
-</md-content>
-
-
+</div>
 
 
 
