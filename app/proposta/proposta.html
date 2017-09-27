@@ -27,7 +27,7 @@
 
 
         <!--    CARD NEXT      -->
-        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-if="dati.prossima == true">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-if="dati.prossima == true && dati.finish == false">
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">Prossima data</span>
@@ -41,7 +41,28 @@
             </div>
 
             <md-card-actions layout="row" layout-align="end center" >
-                    <md-button class="md-raised md-primary" ng-click="cronosfera()">VAI</md-button>
+                <md-button class="md-raised md-primary" ng-click="cronosfera()">VAI</md-button>
+            </md-card-actions>
+        </md-card>
+
+
+        <!--    CARD FINISH      -->
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-if="dati.prossima == true && dati.finish == true">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Avete completato il viaggio nel tempo!</span>
+                    <span class="md-subhead">Ora potete tornare nel presente ma prima di farlo avvisate lo Stregatto.</span>
+                </md-card-title-text>
+                <hr>
+            </md-card-title>
+
+            <div class="card-content">
+                <img src="../images/default_profile.png" class="img-whatsapp">
+                </img>
+            </div>
+
+            <md-card-actions layout="row" layout-align="end center" >
+                <md-button class="md-raised md-primary whatsapp" ng-click="apriChat()">CHAT</md-button>
             </md-card-actions>
         </md-card>
 

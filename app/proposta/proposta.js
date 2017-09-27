@@ -23,7 +23,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     })
 }])
 
-app.controller('propostaCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth', '$location', '$routeParams', '$firebaseStorage', 'Tappe', 'ProposteService', function ($scope, $rootScope, Utente, $firebaseAuth, $location, $routeParams, $firebaseStorage, Tappe, ProposteService) {
+app.controller('propostaCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth', '$location', '$routeParams', '$firebaseStorage', 'Tappe', 'ProposteService', '$window', function ($scope, $rootScope, Utente, $firebaseAuth, $location, $routeParams, $firebaseStorage, Tappe, ProposteService, $window) {
     $scope.dati = {};
     $scope.dati.feedback = "";
     $scope.dati.error = "";
@@ -31,6 +31,8 @@ app.controller('propostaCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth
     $scope.dati.prossima = false;
 
     $scope.dati.invio = false;
+
+    $scope.dati.finish = false
 
     var codice = $routeParams.codiceTappa;
     $rootScope.info.tappaAttuale = Tappe.getTappeInfo(codice);
@@ -67,6 +69,27 @@ app.controller('propostaCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth
                 });
 
 
+
+                //AGGIORNA CONTEGGIO TAPPE
+                $scope.dati.squadre = Utente.getData();
+                $scope.dati.squadre.$loaded().then(function () {
+                    for (var i = 0; i < $scope.dati.squadre.length; i++) {
+                        if ($scope.dati.squadre[i].nome == $rootScope.info.user.nome) {
+                            var sqid = $rootScope.info.user.$id;
+                            var vecchieTappe = $rootScope.info.user.tappe;
+                            var nuoveTappe = vecchieTappe + 1;
+
+                            console.log("Vecchie tappe: " + vecchieTappe + "; Nuove tappe: " + nuoveTappe);
+                            Utente.aggiornaTappe(sqid, nuoveTappe);
+
+                            if(nuoveTappe == 6){
+                                $scope.dati.finish = true;
+                            }
+                        }
+                    }
+                });
+
+
             });
         }
 
@@ -76,7 +99,17 @@ app.controller('propostaCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth
     $scope.cronosfera = function () {
         console.log("ho premuto su VAI");
         console.log("Dopo la proposta, nel rootscope c'è: " + $rootScope.info.prossimaData)
-        $location.path("/home");
+        console.log("Dopo la proposta, ho queste tappe: " + $rootScope.info.user.tappe)
+
+        //$location.path("/home");
+    };
+
+
+    $scope.apriChat = function () {
+        var testo = "Ciao Stregatto, siamo " + $rootScope.info.user.componenti + " della squadra " + $rootScope.info.user.nome + ", abbiamo portato a termine il viaggio nel tempo, stiamo tornando nel presente.";
+        var testoEncoded = encodeURI(testo);
+        var url = "https://api.whatsapp.com/send?phone=393936004234&text="+testoEncoded;
+        $window.open(url);
     };
 
 

@@ -66,7 +66,18 @@ angular.module('myAppUtente.utentiService', [])
                     logged: false,
                     img: "../images/default_profile.png",
                     ruolo: "squadra",
+                    tappe: 0,
                 });
+            },
+
+            aggiornaTappe: function (uid, nuoveTappe) {
+                console.log("sono entrato nell'aggiorna tappe");
+                var ref = firebase.database().ref().child("utenti").child(uid);
+                // create a synchronized array
+                ref.update({
+                    tappe: nuoveTappe
+                });
+
             }
 
 

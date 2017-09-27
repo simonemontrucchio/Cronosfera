@@ -3,7 +3,7 @@
 
 
         <!--    CARD LUOGO      -->
-        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-if="dati.evento == false">
             <form id="frmLuogo" role="form" ng-submit="ottieniEvento()">
                 <md-card-title>
                     <md-card-title-text>
