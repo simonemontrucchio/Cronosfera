@@ -1,0 +1,31 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+
+    <div class="alert alert-danger alert-dismissible" role="alert" ng-if="error">{{ error.message }}</div>
+    <div class="notifica feedback" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
+
+    <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+
+
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Aiuto</span>
+                    <span class="md-subhead"><b>Da usare solo in caso di necessità</b></span>
+                </md-card-title-text>
+
+            </md-card-title>
+
+            <div class="card-content">
+                <img src="../images/default_profile.png" class="img-whatsapp">
+                </img>
+            </div>
+
+            <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-raised md-primary whatsapp" ng-click="apriChat()" >CHAT
+                    </md-button>
+            </md-card-actions>
+
+        </md-card>
+
+    </div>
+</md-content>

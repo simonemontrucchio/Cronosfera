@@ -44,6 +44,7 @@ var app = angular.module('myApp', [
     'myAppMeteImpegni',
         'myApp.fileUpload',
         'myAppTappa',
+        'myAppAiuto',
     'myAppListaBrevetti',
     'myAppCartaCompetenza',
     'myAppSceltaMaestroBrev',

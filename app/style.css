@@ -72,6 +72,31 @@ md-input-container.md-hue-1:not(.md-input-invalid).md-input-resized .md-input {
     border: none;
 }
 
+.img-whatsapp{
+    max-width: 100%;
+    border-radius: 100%;
+}
+
+.whatsapp {
+    background-color: #01E675 !important;
+    color: #fff !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (min-width: 350px) {
 
