@@ -64,7 +64,6 @@ app.controller('propostaCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth
                     console.log("La prossima data sarà: " + prossimaData) ;
 
                     $rootScope.info.prossimaData = prossimaData;
-                    console.log("Nel rootscope c'è: " + $rootScope.info.prossimaData)
                 });
 
 
@@ -72,6 +71,15 @@ app.controller('propostaCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth
         }
 
     };
+
+
+    $scope.cronosfera = function () {
+        console.log("ho premuto su VAI");
+        console.log("Dopo la proposta, nel rootscope c'è: " + $rootScope.info.prossimaData)
+        $location.path("/home");
+    };
+
+
 
 
 }]);

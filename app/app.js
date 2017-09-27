@@ -96,7 +96,8 @@ app.controller('LogCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth', '$
     $rootScope.info.info = false;
     //console.log("Nel LogCtrl setto info a false, e vale: " +  $rootScope.info.info);
 
-
+    $rootScope.info.prossimaData = "dd/mm/yyyy";
+    console.log("Prossima data settata in app.js: " + $rootScope.info.prossimaData);
 
     //MOSTRA ALCUNE PARTI SOLO SE SI E' LOGGATI
     $scope.isLogged = function () {

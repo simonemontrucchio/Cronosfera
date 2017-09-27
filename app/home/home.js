@@ -22,13 +22,17 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 
-app.controller('myAppHomeCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$location', '$routeParams',function ($scope, $rootScope, $firebaseAuth, $location, $routeParams) {
+app.controller('myAppHomeCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$location','Tappe',function ($scope, $rootScope, $firebaseAuth, $location, Tappe) {
 
     //initialize variables
     $scope.dati = {};
     $scope.dati.feedback = "";
 
-    if ($rootScope.info.prossimaData!= undefined && $rootScope.info.prossimaData!=""){
+    $scope.dati.tappe = Tappe.getData();
+
+    console.log("Prossima data: " + $rootScope.info.prossimaData);
+
+    if ($rootScope.info.prossimaData != undefined && $rootScope.info.prossimaData != "dd/mm/yyyy"){
         $scope.dati.data = $rootScope.info.prossimaData;
     }
 
@@ -36,14 +40,18 @@ app.controller('myAppHomeCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$loca
 
 
 
+
     $scope.ottieniGPS = function () {
         console.log("ho premuto su VAI");
-
-
-        if ($scope.dati.data == "11/09/2001") {
-            console.log("11 settembre");
-            $location.path("/luogoTappa/001");
-        }
+        $scope.dati.tappe.$loaded().then(function () {
+            for (var i = 0; i < $scope.dati.tappe.length; i++) {
+                console.log("Sono nel for alla tappa: " + $scope.dati.tappe[i].$id);
+                if ($scope.dati.tappe[i].data == $scope.dati.data) {
+                    console.log("Chiedo le coordinate per la tappa: " + $scope.dati.tappe[i].$id);
+                    $location.path("/luogoTappa/" + $scope.dati.tappe[i].$id);
+                }
+            }
+        });
     };
 
 
