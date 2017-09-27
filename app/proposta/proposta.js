@@ -62,6 +62,9 @@ app.controller('propostaCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth
                 $rootScope.info.tappaProssima.$loaded().then(function () {
                     var prossimaData =  $rootScope.info.tappaProssima.data;
                     console.log("La prossima data sarà: " + prossimaData) ;
+
+                    $rootScope.info.prossimaData = prossimaData;
+                    console.log("Nel rootscope c'è: " + $rootScope.info.prossimaData)
                 });
 
 

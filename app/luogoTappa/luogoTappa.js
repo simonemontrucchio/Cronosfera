@@ -33,6 +33,12 @@ app.controller('myAppLuogoTappaCtrl', ['$scope', '$rootScope', '$routeParams', '
 
 
 
+    $scope.navigatore = function () {
+        var coordinate = encodeURI($rootScope.info.tappaAttuale.coordinate);
+        var url = "https://www.google.com/maps/dir/?api=1&destination=" + coordinate + "&dir_action=navigate";
+        $window.open(url);
+    };
+
 
     $scope.ottieniEvento = function () {
         console.log("ho premuto su MOSTRA EVENTO");

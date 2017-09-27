@@ -84,7 +84,10 @@ md-input-container.md-hue-1:not(.md-input-invalid).md-input-resized .md-input {
 
 
 
-
+.maps {
+    color: white !important;
+    background-color: #4285f4 !important;
+}
 
 
 

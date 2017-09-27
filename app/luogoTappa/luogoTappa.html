@@ -7,14 +7,22 @@
             <form id="frmLuogo" role="form" ng-submit="ottieniEvento()">
                 <md-card-title>
                     <md-card-title-text>
-                        <span class="md-headline">Dopo esservi recati qui</span>
+                        <span class="md-headline">Recatevi qui</span>
                         <span class="md-subhead"><b>{{info.tappaAttuale.coordinate}}</b></span>
                     </md-card-title-text>
                     <hr>
                 </md-card-title>
 
                 <div class="card-content">
-                    <div>{{info.tappaAttuale.tag}}
+                    <md-card-actions layout="row" layout-align="center center">
+                        <md-button ng-click="navigatore()" class="md-raised md-primary maps" aria-label="Navigation">
+                             <md-icon aria-label="Navigation" class="material-icons maps">navigation</md-icon> AVVIA
+                        </md-button>
+
+                    </md-card-actions>
+
+                    <br><br>
+                    <div>Dopo essere arrivati nel punto indicato, {{info.tappaAttuale.tag}}
                     </div>
                     <br><br>
                     <div >

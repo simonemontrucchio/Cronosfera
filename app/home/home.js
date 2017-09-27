@@ -22,11 +22,17 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 
-app.controller('myAppHomeCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$location', function ($scope, $rootScope, $firebaseAuth, $location) {
+app.controller('myAppHomeCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$location', '$routeParams',function ($scope, $rootScope, $firebaseAuth, $location, $routeParams) {
 
     //initialize variables
     $scope.dati = {};
     $scope.dati.feedback = "";
+
+    if ($rootScope.info.prossimaData!= undefined && $rootScope.info.prossimaData!=""){
+        $scope.dati.data = $rootScope.info.prossimaData;
+    }
+
+
 
 
 
