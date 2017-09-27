@@ -1,5 +1,8 @@
 <md-content class="md-padding" layout-xs="column" layout="row">
     <div flex-xs flex-gt-xs="50" layout="column">
+
+
+        <!--    CARD LUOGO      -->
         <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
             <form id="frmLuogo" role="form" ng-submit="ottieniEvento()">
                 <md-card-title>
@@ -10,8 +13,6 @@
                     <hr>
                 </md-card-title>
 
-
-                <!-- ASSEGNAZIONE FIAMMA -->
                 <div class="card-content">
                     <div>{{info.tappaAttuale.tag}}
                     </div>
@@ -27,9 +28,50 @@
                 <md-card-actions layout="row" layout-align="end center">
                     <md-button type="submit" class="md-raised md-primary">MOSTRA EVENTO</md-button>
                 </md-card-actions>
-
             </form>
         </md-card>
+
+
+
+        <!--    CARD EVENTO      -->
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-if="dati.evento == true">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{info.tappaAttuale.argomento}}</span>
+                        <span class="md-subhead"><b>{{info.tappaAttuale.luogo}}</b>, {{info.tappaAttuale.data}}</span>
+                    </md-card-title-text>
+                    <hr>
+                </md-card-title>
+
+                <div class="card-content">
+                    <div><em>{{info.tappaAttuale.storia}}</em>
+                    </div>
+                    <br><br>
+                    <div >
+                        Adesso potete allontanarvi dalle coordinate che avete raggiunto, e quando avrete trovato un posto tranquillo e silenzioso scoprite l'aneddoto di Alice.
+                        <br>
+                        <md-card-actions layout="row" layout-align="center center">
+                            <md-button ng-click="aneddoto()" class="md-raised md-primary">ANEDDOTO</md-button>
+                        </md-card-actions>
+                    </div>
+                    <br>
+                    <div>
+                        Dopo aver scoperto l'aneddoto prendete un po' di tempo per discutere di squadra sul tema <b>{{info.tappaAttuale.argomento}}</b>
+                        e pensare quali siano i problemi, le cose che non vanno o non vi piacciono e potreste cambiare come Branca R/S.
+                        <br>
+                        Il padre di Alice pensava sempre a <em>6 cose impossibili</em> prima di colazione, qualcosa di così grande da essere poi in grado di realizzare qualunque cosa durante la giornata.
+                        <br>Provate anche voi a pensare in grande, qualcosa di <em>impossibile</em>, che possa lasciare veramente il segno.
+                        <br>
+                        Quando ci avrete pensato bene, proponente un'azione concreta per provare a cambiare gli eventi nel passato e rendere migliore il futuro.
+                    </div>
+                    <br>
+                </div>
+
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ng-click="proposta()" class="md-raised md-primary">PROPOSTA CAMBIAMENTO</md-button>
+                </md-card-actions>
+        </md-card>
+
     </div>
 </md-content>
 

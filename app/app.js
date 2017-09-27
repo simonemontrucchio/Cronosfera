@@ -21,6 +21,8 @@ var app = angular.module('myApp', [
         'myAppLogin',
         'myAppAuthentication',
         'myAppHome',
+        'myAppProposta',
+        'myAppProposte',
     'myAppRegistrazioneRagazzo',
     'myAppSquadriglia',
     'myAppListaSpecialita',
@@ -69,6 +71,9 @@ app.config(['$locationProvider', '$routeProvider', '$mdThemingProvider', functio
     $routeProvider.otherwise({
         redirectTo: '/home'
     });
+
+
+
 }]);
 
 

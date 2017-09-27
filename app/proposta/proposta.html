@@ -1,0 +1,53 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="50" layout="column" ng-controller="propostaCtrl as $ctrl">
+
+        <form id="frmFoto" role="form" ng-submit="proponiCambiamento()">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Proposta di cambiamento</span>
+                        <span class="md-subhead"><b>{{info.tappaAttuale.argomento}}</b></span>
+                    </md-card-title-text>
+                </md-card-title>
+                <br>
+
+                <div class="card-content">
+
+                    <md-input-container class="md-block">
+                        <textarea id="proposta" name="proposta" ng-model="dati.proposta" required rows="10" placeholder="Inserite qui la proposta di cambiamento"></textarea>
+                    </md-input-container>
+                </div>
+
+
+                <md-card-actions layout="row" layout-align="end center" ng-if="dati.invio == false">
+                    <md-button type="submit" class="md-primary md-raised">PROPONI CAMBIAMENTO</md-button>
+                </md-card-actions>
+            </md-card>
+        </form>
+
+
+        <!--    CARD NEXT      -->
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-if="dati.prossima == true">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Prossima data</span>
+                    <span class="md-subhead">Adesso tornate al <b>{{info.tappaProssima.data}}</b></span>
+                </md-card-title-text>
+                <hr>
+            </md-card-title>
+
+            <div class="card-content">
+
+            </div>
+
+            <md-card-actions layout="row" layout-align="end center" >
+                <a href="#!/home">
+                    <md-button class="md-raised md-primary">VAI</md-button>
+                </a>
+            </md-card-actions>
+        </md-card>
+
+
+
+    </div>
+</md-content>

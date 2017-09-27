@@ -71,6 +71,11 @@
     <script src="login/login.js"></script>
     <script src="home/home.js"></script>
     <script src="aiuto/aiuto.js"></script>
+    <script src="proposta/proposta.js"></script>
+    <script src="components/proposte/proposte.js"></script>
+    <script src="components/proposte/proposte-service.js"></script>
+
+
     <script src="components/authentication/authentication.js"></script>
     <script src="components/authentication/authentication-service.js"></script>
     <script src="capo/registrazioneRagazzo/registrazioneRagazzo.js"></script>
@@ -204,9 +209,9 @@
                     <!-- MENU CAPO -->
                     <ul>
                         <li>
-                            <a href="#!/riepilogoScadenze" ng-click="close()">
-                                <md-icon aria-label="Event Range" class="material-icons">event_range</md-icon>
-                                Scadenze Ragazzi</a>
+                            <a href="#!/profilo/{{info.user.nome}}" ng-click="close()">
+                                <md-icon aria-label="People" class="material-icons">people</md-icon>
+                                Profilo squadra</a>
                         </li>
                         <md-divider ng-if="!$last"></md-divider>
                         <li>
