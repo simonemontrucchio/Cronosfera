@@ -44,7 +44,7 @@ app.controller('propostaCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth
 
         if ($scope.dati.proposta!= undefined && $scope.dati.proposta!="") {
 
-            ProposteService.aggiungiProposta(codice, $rootScope.info.user.nome, $scope.dati.proposta).then(function(ref) {
+            ProposteService.aggiungiProposta(codice, $rootScope.info.user.nome, $rootScope.info.tappaAttuale.data, $rootScope.info.tappaAttuale.luogo, $rootScope.info.tappaAttuale.argomento, $scope.dati.proposta).then(function(ref) {
 
                 console.log("uscito dal factory aggiungi proposta");
 

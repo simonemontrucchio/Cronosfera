@@ -6,7 +6,7 @@ var app = angular.module('myAppProposteService', []);
 app.factory('ProposteService', function ($firebaseArray, $firebaseObject) {
     var proposteService = {
 
-        aggiungiProposta: function (tappa, squadra, testo) {
+        aggiungiProposta: function (tappa, squadra, data, luogo, argomento, testo) {
             console.log("entra nella function che aggiunge un ragazzo");
             //add the user to list of users and set the logged value to true
             var ref = firebase.database().ref().child("proposte");
@@ -14,6 +14,9 @@ app.factory('ProposteService', function ($firebaseArray, $firebaseObject) {
             return $firebaseArray(ref).$add({
                 tappa: "" + tappa + "",
                 squadra: squadra,
+                data: data,
+                luogo: luogo,
+                argomento: argomento,
                 testo: testo
             });
         },
