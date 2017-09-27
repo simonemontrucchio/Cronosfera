@@ -13,7 +13,7 @@
 
 .sfondo {
     background-color: black;
-    height: 620px;
+    height: 600px;
 }
 
 
@@ -30,9 +30,9 @@
 .cronosfera {
     background: url(../images/cronosfera.gif) no-repeat center -60px;
     background-size: 195%;
-    height: 500px;
+    height: 450px;
     position: relative;
-    top: 60px;
+    /*top: 60px;*/
  }
 
 input.data {

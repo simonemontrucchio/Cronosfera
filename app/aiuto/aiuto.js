@@ -32,7 +32,7 @@ app.controller('aiutoCtrl', ['$scope', '$rootScope', 'Utente', 'currentAuth', '$
 
         var testo = "Ciao Stregatto, siamo " + $rootScope.info.user.componenti + " della squadra " + $rootScope.info.user.nome + ", abbiamo un problema, potresti aiutarci?";
         var testoEncoded = encodeURI(testo);
-        var url = "https://api.whatsapp.com/send?phone=393936004234&text="+testoEncoded;
+        var url = "https://api.whatsapp.com/send?phone=393341552927&text="+testoEncoded;
         $window.open(url);
     };
 }]);
