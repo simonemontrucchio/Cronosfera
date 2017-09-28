@@ -89,8 +89,10 @@ md-input-container.md-hue-1:not(.md-input-invalid).md-input-resized .md-input {
     background-color: #4285f4 !important;
 }
 
-
-
+md-icon.material-icons {
+    position: relative !important;
+    top: -2px !important;
+}
 
 
 
@@ -104,8 +106,8 @@ md-input-container.md-hue-1:not(.md-input-invalid).md-input-resized .md-input {
 @media screen and (min-width: 350px) {
 
     .menu-laterale {
-        line-height: 2.25em;
-        font-size: 1.35em;
+        line-height: 2.5em;
+        font-size: 1.5em;
         overflow-y: auto !important;
     }
 

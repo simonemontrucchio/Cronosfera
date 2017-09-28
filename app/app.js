@@ -23,6 +23,8 @@ var app = angular.module('myApp', [
         'myAppHome',
         'myAppProposta',
         'myAppProposte',
+        'myAppImpossibili',
+        'myAppImpossibiliStregatto',
     'myAppRegistrazioneRagazzo',
     'myAppSquadriglia',
     'myAppListaSpecialita',

@@ -74,6 +74,8 @@
     <script src="proposta/proposta.js"></script>
     <script src="components/proposte/proposte.js"></script>
     <script src="components/proposte/proposte-service.js"></script>
+    <script src="impossibili/impossibili.js"></script>
+    <script src="impossibiliStregatto/impossibiliStregatto.js"></script>
 
 
     <script src="components/authentication/authentication.js"></script>
@@ -159,17 +161,17 @@
                 <div class="md-toolbar-tools">
 
 
-                    <md-button ng-click="close()" class="md-icon-button" aria-label="restore">
-                        <a href="#!/home">
-                            <md-icon aria-label="Restore" class="material-icons">restore</md-icon>
+                    <md-button ng-click="" class="md-icon-button" aria-label="restore">
+                        <a href="">
+                            <md-icon aria-label="Restore" class="material-icons"></md-icon>
                         </a>
                     </md-button>
 
                     <h1 flex md-truncate><a class="logotype" href="#!/home" ng-click="close()">CRONOSFERA</a></h1>
 
-                    <md-button ng-click="close()" class="md-icon-button" aria-label="Home">
-                        <a href="#!/login">
-                            <md-icon aria-label="Logout" class="material-icons">exit_to_app</md-icon>
+                    <md-button ng-click="" class="md-icon-button" aria-label="">
+                        <a href="">
+                            <md-icon aria-label="" class="material-icons"></md-icon>
                         </a>
                     </md-button>
 
@@ -201,17 +203,36 @@
 
 
             <md-content layout-padding ng-if="isLogged()">
-
                 <!-- Voci del menu laterale -->
                 <div class="menu-laterale">
-
-
-                    <!-- MENU CAPO -->
                     <ul>
+                        <li>
+                            <a href="#!/home" ng-click="close()">
+                                <md-icon aria-label="Restore" class="material-icons">restore</md-icon>
+                                Viaggio</a>
+                        </li>                        <md-divider ng-if="!$last"></md-divider>
+                        <li>
+                            <a href="#!/impossibili" ng-click="close()" ng-if="info.user.nome != 'Stregatto' ">
+                                <md-icon aria-label="Filter 6" class="material-icons">filter_6</md-icon>
+                                Cose impossibili</a>
+                        </li>
+                        <li>
+                            <a href="#!/impossibiliStregatto" ng-click="close()" ng-if="info.user.nome == 'Stregatto' ">
+                                <md-icon aria-label="Filter 6" class="material-icons">filter_6</md-icon>
+                                Cose impossibili</a>
+                        </li>
+                        <md-divider ng-if="!$last"></md-divider>
                         <li>
                             <a href="#!/profilo/{{info.user.nome}}" ng-click="close()">
                                 <md-icon aria-label="People" class="material-icons">people</md-icon>
                                 Profilo squadra</a>
+                        </li>
+
+                        <md-divider ng-if="!$last"></md-divider>
+                        <li>
+                            <a href="#!/login" ng-click="close()">
+                                <md-icon aria-label="Logout" class="material-icons">exit_to_app</md-icon>
+                                Logout</a>
                         </li>
                         <md-divider ng-if="!$last"></md-divider>
                         <li>
@@ -222,14 +243,8 @@
                         <md-divider ng-if="!$last"></md-divider>
                     </ul>
 
-
-
-
                 </div>
-
             </md-content>
-
-
         </md-sidenav>
 
     </section>

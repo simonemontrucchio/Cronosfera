@@ -31,7 +31,7 @@ app.controller('myAppRegistrationViewCtrl', ['$scope', '$rootScope', 'Auth', 'Ut
             $scope.control = {};
             $scope.control.utenti = Utente.getData();
             $scope.control.utenti.$loaded().then(function () {
-                if (esistente == false) {
+                if ($scope.user.nome != "Stregatto") {
                     console.log("esistente vale false, registro");
                     //create a new user with specified email and password
                     Auth.$createUserWithEmailAndPassword($scope.user.email, $scope.user.password)
@@ -68,10 +68,13 @@ app.controller('myAppRegistrationViewCtrl', ['$scope', '$rootScope', 'Auth', 'Ut
                         console.log(error.message);
                     });
                 }
+                else {
+                    alert("Non potete chiamarvi Stregatto");
+                }
             });
         }
         else {
-            $scope.dati.error = "Password diverse";
+            alert("Password diverse");
         }
     };
 }]);

@@ -1,0 +1,46 @@
+<md-content class="md-padding" layout-xs="column" layout="row">
+
+    <div class="alert alert-danger alert-dismissible" role="alert" ng-if="error">{{ error.message }}</div>
+    <div class="notifica feedback" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
+
+    <div flex-xs flex-gt-xs="50" layout="column">
+        <!-- CARD NESSUNA COSA IMPOSSIBILE -->
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-if="dati.impossibili == false">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Non avete ancora cambiato eventi del passato</span>
+                </md-card-title-text>
+            </md-card-title>
+            <div class="card-content">
+            </div>
+            <md-card-actions layout="row" layout-align="end center">
+            </md-card-actions>
+        </md-card>
+    </div>
+</md-content>
+
+
+<!-- CARD COSA IMPOSSIBILE -->
+<div flex layout="row" layout-wrap layout-align="center start">
+
+    <md-card flex="15" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch    ng-repeat="proposta in dati.proposte | orderBy:['squadra','argomento']"
+                                                                                        ng-if="dati.impossibili == true"   >
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{proposta.argomento}}</span>
+                <span class="md-subhead"><b>{{proposta.data}}</b>, {{proposta.squadra}}</span>
+            </md-card-title-text>
+
+        </md-card-title>
+
+        <div class="card-content">
+            <div>
+                {{proposta.testo}}
+            </div>
+            <br><br>
+        </div>
+        <md-card-actions layout="row" layout-align="end center">
+        </md-card-actions>
+    </md-card>
+</div>
+
