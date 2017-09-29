@@ -22,7 +22,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 
-app.controller('myAppHomeCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$location','Tappe',function ($scope, $rootScope, $firebaseAuth, $location, Tappe) {
+app.controller('myAppHomeCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$location','Tappe', 'Utente', function ($scope, $rootScope, $firebaseAuth, $location, Tappe, Utente) {
 
     //initialize variables
     $scope.dati = {};
@@ -30,11 +30,17 @@ app.controller('myAppHomeCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$loca
 
     $scope.dati.tappe = Tappe.getData();
 
-    console.log("Prossima data: " + $rootScope.info.prossimaData);
 
-    if ($rootScope.info.prossimaData != undefined && $rootScope.info.prossimaData != "dd/mm/yyyy"){
-        $scope.dati.data = $rootScope.info.prossimaData;
-    }
+    $scope.dati.squadre = Utente.getData();
+    $scope.dati.squadre.$loaded().then(function () {
+        for (var i = 0; i < $scope.dati.squadre.length; i++) {
+            if ($scope.dati.squadre[i].nome == $rootScope.info.user.nome) {
+                if ($scope.dati.squadre[i].prossimaData != "dd/mm/yyyy" && $scope.dati.squadre[i].prossimaData != ""){
+                    $scope.dati.data = $scope.dati.squadre[i].prossimaData;
+                }
+            }
+        }
+    });
 
 
 

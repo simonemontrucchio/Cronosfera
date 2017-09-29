@@ -67,15 +67,17 @@ angular.module('myAppUtente.utentiService', [])
                     img: "../images/default_profile.png",
                     ruolo: "squadra",
                     tappe: 0,
+                    prossimaData: "dd/mm/yyyy",
                 });
             },
 
-            aggiornaTappe: function (uid, nuoveTappe) {
+            aggiornaTappe: function (uid, nuoveTappe, prossimaData) {
                 console.log("sono entrato nell'aggiorna tappe");
                 var ref = firebase.database().ref().child("utenti").child(uid);
                 // create a synchronized array
                 ref.update({
-                    tappe: nuoveTappe
+                    tappe: nuoveTappe,
+                    prossimaData: prossimaData
                 });
 
             }

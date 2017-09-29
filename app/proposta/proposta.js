@@ -37,6 +37,8 @@ app.controller('propostaCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth
     var codice = $routeParams.codiceTappa;
     $rootScope.info.tappaAttuale = Tappe.getTappeInfo(codice);
 
+    var prossimaData = "";
+
 
 
     $scope.proponiCambiamento=function(){
@@ -62,9 +64,8 @@ app.controller('propostaCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth
                 $rootScope.info.tappaProssima = Tappe.getTappeInfo(next);
 
                 $rootScope.info.tappaProssima.$loaded().then(function () {
-                    var prossimaData =  $rootScope.info.tappaProssima.data;
+                    prossimaData =  $rootScope.info.tappaProssima.data;
                     console.log("La prossima data sarà: " + prossimaData) ;
-
                     $rootScope.info.prossimaData = prossimaData;
                 });
 
@@ -80,7 +81,7 @@ app.controller('propostaCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth
                             var nuoveTappe = vecchieTappe + 1;
 
                             console.log("Vecchie tappe: " + vecchieTappe + "; Nuove tappe: " + nuoveTappe);
-                            Utente.aggiornaTappe(sqid, nuoveTappe);
+                            Utente.aggiornaTappe(sqid, nuoveTappe, prossimaData);
 
                             if(nuoveTappe == 6){
                                 $scope.dati.finish = true;
@@ -98,10 +99,9 @@ app.controller('propostaCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth
 
     $scope.cronosfera = function () {
         console.log("ho premuto su VAI");
-        console.log("Dopo la proposta, nel rootscope c'è: " + $rootScope.info.prossimaData)
-        console.log("Dopo la proposta, ho queste tappe: " + $rootScope.info.user.tappe)
-
-        //$location.path("/home");
+        //console.log("Dopo la proposta, nel rootscope c'è: " + $rootScope.info.prossimaData)
+        //console.log("Dopo la proposta, ho queste tappe: " + $rootScope.info.user.tappe)
+        $location.path("/home");
     };
 
 
