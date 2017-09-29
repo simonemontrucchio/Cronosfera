@@ -79,19 +79,40 @@ app.config(['$locationProvider', '$routeProvider', '$mdThemingProvider', functio
 }]);
 
 
-app.run(["$rootScope", "$location", function ($rootScope, $location) {
+app.run(["$rootScope", "$location", "$window", function ($rootScope, $location, $window) {
     $rootScope.$on("$routeChangeError", function (event, next, previous, error) {
         console.log("sono nel on change route error del run del app.js")
         if (error === "AUTH_REQUIRED") {
             $location.path("/login");
         }
     });
+
+    $rootScope.online = navigator.onLine;
+    $window.addEventListener("offline", function() {
+        $rootScope.$apply(function() {
+            $rootScope.online = false;
+        });
+    }, false);
+
+    $window.addEventListener("online", function() {
+        $rootScope.$apply(function() {
+            $rootScope.online = true;
+        });
+    }, false);
+
 }]);
 
 
 app.controller('LogCtrl', ['$scope', '$rootScope', 'Utente', '$firebaseAuth', '$location', 'Scadenza', function ($scope, $rootScope, Utente, $firebaseAuth, $location, Scadenza) {
 
-
+    $scope.$watch('online', function(newStatus) {
+        if ($rootScope.online == true){
+            console.log("Sei online")
+        }
+        if ($rootScope.online == false){
+            console.log("Sei offline")
+        }
+    });
 
     //variabile che permette di scaricare i dati dell'utente loggato solo una volta all'avvio dell'app
     $rootScope.info = {};

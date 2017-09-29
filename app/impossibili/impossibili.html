@@ -1,4 +1,4 @@
-<md-content class="md-padding" layout-xs="column" layout="row">
+<md-content class="md-padding" layout-xs="column" layout="row" ng-if="dati.impossibili == false">
 
     <div class="alert alert-danger alert-dismissible" role="alert" ng-if="error">{{ error.message }}</div>
     <div class="notifica feedback" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
@@ -6,7 +6,7 @@
     <div flex-xs flex-gt-xs="50" layout="column">
 
         <!-- CARD NESSUNA COSA IMPOSSIBILE -->
-        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-if="dati.impossibili == false">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch >
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">Non avete ancora cambiato eventi del passato</span>
@@ -17,9 +17,46 @@
             <md-card-actions layout="row" layout-align="end center">
             </md-card-actions>
         </md-card>
+    </div>
+</md-content>
 
 
-        <!-- CARD COSA IMPOSSIBILE -->
+
+
+<!-- CARD ONLINE -->
+<md-content class="md-padding" layout-xs="column" layout="row" ng-if="dati.impossibili == true && online == true">
+    <div flex-xs flex-gt-xs="50" layout="column">
+
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch  >
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Siete online</span>
+                </md-card-title-text>
+
+            </md-card-title>
+
+            <div class="card-content">
+                <div>
+                    Per poter vedere le proposte di cambiamento che avete fatto nel passato dovete andare per qualche momento <b>offline</b> (disabilitando la connessione dati o il WiFi),
+                    altrimenti potreste interferire nuovamente con gli eventi del passato in cui siete già stati e causare danni irreparabili al futuro!
+                </div>
+                <br><br>
+            </div>
+            <md-card-actions layout="row" layout-align="end center">
+            </md-card-actions>
+        </md-card>
+
+    </div>
+</md-content>
+
+
+
+
+
+<!-- CARD COSA IMPOSSIBILE -->
+<md-content class="md-padding" layout-xs="column" layout="row" ng-if="dati.impossibili == true && online == false">
+    <div flex-xs flex-gt-xs="50" layout="column">
+
         <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch    ng-repeat="proposta in dati.proposte | orderBy:'argomento'"
                                                                                             ng-if="dati.impossibili == true  && proposta.squadra == info.user.nome"   >
             <md-card-title>

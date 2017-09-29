@@ -26,16 +26,16 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 app.controller('impossibiliCtrl', ['$scope', '$rootScope', 'ProposteService', 'currentAuth', '$firebaseAuth', '$location', '$routeParams', function ($scope, $rootScope, ProposteService, currentAuth, $firebaseAuth, $location, $routeParams) {
 
-
-
     //CARICO IL PROFILO CON I DATI DELL'UTENTE SELEZIONATO
     $scope.dati = {};
-    $scope.dati.impossibili = false;
+
+    console.log($scope.dati.impossibili);
 
     $scope.dati.proposte = ProposteService.getData();
     $scope.dati.proposte.$loaded().then(function () {
+        $scope.dati.impossibili = false;
         for (var i = 0; i < $scope.dati.proposte.length; i++) {
-            if ($scope.dati.proposte[i].testo != undefined && $scope.dati.proposte[i].testo != "") {
+            if ($scope.dati.proposte[i].squadra == $rootScope.info.user.nome) {
                 $scope.dati.impossibili = true;
             }
         }

@@ -4,6 +4,7 @@
     <div class="notifica feedback" role="alert" ng-if="dati.feedback">{{ dati.feedback }}</div>
 
     <div flex-xs flex-gt-xs="50" layout="column">
+
         <!-- CARD NESSUNA COSA IMPOSSIBILE -->
         <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-if="dati.impossibili == false">
             <md-card-title>
@@ -23,8 +24,7 @@
 <!-- CARD COSA IMPOSSIBILE -->
 <div flex layout="row" layout-wrap layout-align="center start">
 
-    <md-card flex="15" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch    ng-repeat="proposta in dati.proposte | orderBy:['squadra','argomento']"
-                                                                                        ng-if="dati.impossibili == true"   >
+    <md-card flex="15" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch    ng-repeat="proposta in dati.proposte | orderBy:['squadra','argomento']">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline">{{proposta.argomento}}</span>

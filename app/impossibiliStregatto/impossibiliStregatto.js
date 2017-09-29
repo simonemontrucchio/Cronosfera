@@ -30,16 +30,8 @@ app.controller('impossibiliStregattoCtrl', ['$scope', '$rootScope', 'ProposteSer
 
     //CARICO IL PROFILO CON I DATI DELL'UTENTE SELEZIONATO
     $scope.dati = {};
-    $scope.dati.impossibili = false;
 
     $scope.dati.proposte = ProposteService.getData();
-    $scope.dati.proposte.$loaded().then(function () {
-        for (var i = 0; i < $scope.dati.proposte.length; i++) {
-            if ($scope.dati.proposte[i].testo != undefined && $scope.dati.proposte[i].testo != "") {
-                $scope.dati.impossibili = true;
-            }
-        }
-    });
 
 
 }]);
