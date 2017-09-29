@@ -26,13 +26,29 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 app.controller('aiutoCtrl', ['$scope', '$rootScope', 'Utente', 'currentAuth', '$firebaseAuth', '$location', '$routeParams', '$window', function ($scope, $rootScope, Utente, currentAuth, $firebaseAuth, $location, $routeParams, $window) {
 
+    $scope.dati = {};
 
     // function called when the "logout" button will be pressed
     $scope.apriChat = function () {
 
         var testo = "Ciao Stregatto, siamo " + $rootScope.info.user.componenti + " della squadra " + $rootScope.info.user.nome + ", abbiamo un problema, potresti aiutarci?";
         var testoEncoded = encodeURI(testo);
-        var url = "https://api.whatsapp.com/send?phone=393936004234&text="+testoEncoded;
-        $window.open(url);
+        var numero = "3341552927";
+
+        $scope.dati.utenti = Utente.getData();
+        $scope.dati.utenti.$loaded().then(function () {
+            for (var i = 0; i < $scope.dati.utenti.length; i++) {
+                if ($scope.dati.utenti[i].numero != "" && $scope.dati.utenti[i].nome == "Stregatto" ) {
+                    numero = $scope.dati.utenti[i].numero;
+                }
+
+
+            }
+            var url = "https://api.whatsapp.com/send?phone=39" + numero + "&text=" + testoEncoded;
+            $window.open(url);
+        });
+
+
+
     };
 }]);
