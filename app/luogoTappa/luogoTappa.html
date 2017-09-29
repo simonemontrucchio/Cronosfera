@@ -22,7 +22,13 @@
                     </md-card-actions>
 
                     <br><br>
-                    <div>Dopo essere arrivati nel punto indicato, {{info.tappaAttuale.tag}}
+                    <div>
+                        Dopo essere arrivati nel punto indicato, {{info.tappaAttuale.tag}}
+                    </div>
+                    <br><br>
+                    <div ng-if="dati.ultimi == true">
+                        <h2>Attenzione!</h2>
+                        Dovreste essere gli ultimi a passare di qui, prendete con voi l'oggetto trovato e riportatelo allo Stregatto alla fine del viaggio.
                     </div>
                     <br><br>
                     <div >

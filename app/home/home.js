@@ -51,7 +51,7 @@ app.controller('myAppHomeCtrl', ['$scope', '$rootScope', '$firebaseAuth', '$loca
         console.log("ho premuto su VAI");
         $scope.dati.tappe.$loaded().then(function () {
             for (var i = 0; i < $scope.dati.tappe.length; i++) {
-                console.log("Sono nel for alla tappa: " + $scope.dati.tappe[i].$id);
+                //console.log("Sono nel for alla tappa: " + $scope.dati.tappe[i].$id);
                 if ($scope.dati.tappe[i].data == $scope.dati.data) {
                     console.log("Chiedo le coordinate per la tappa: " + $scope.dati.tappe[i].$id);
                     $location.path("/luogoTappa/" + $scope.dati.tappe[i].$id);

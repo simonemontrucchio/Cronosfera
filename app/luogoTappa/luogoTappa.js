@@ -20,7 +20,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 
-app.controller('myAppLuogoTappaCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Tappe', '$window', function ($scope, $rootScope, $routeParams, $location, Tappe, $window) {
+app.controller('myAppLuogoTappaCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Tappe', '$window', 'ProposteService', 'Utente', function ($scope, $rootScope, $routeParams, $location, Tappe, $window, ProposteService, Utente) {
     //console.log("e' entrato nel ctrl fiamma database");
 
 
@@ -28,8 +28,50 @@ app.controller('myAppLuogoTappaCtrl', ['$scope', '$rootScope', '$routeParams', '
     $scope.dati = {};
     $scope.dati.evento = false;
 
+
     var codice = $routeParams.codiceTappa;
     $rootScope.info.tappaAttuale = Tappe.getTappeInfo(codice);
+
+
+
+
+    var proposteTappa = 0;
+    var numeroSquadre = 0;
+    console.log("Proposte azzerato: " + proposteTappa);
+
+    $scope.dati.proposte = ProposteService.getData();
+    $scope.dati.proposte.$loaded().then(function () {
+        for (var i = 0; i < $scope.dati.proposte.length; i++) {
+            if ($scope.dati.proposte[i].tappa == codice) {
+                proposteTappa++;
+                console.log("Proposte trovate: " + proposteTappa);
+            }
+        }
+
+        $scope.dati.utenti = Utente.getData();
+        $scope.dati.utenti.$loaded().then(function () {
+            for (var i = 0; i < $scope.dati.utenti.length; i++) {
+                if ($scope.dati.utenti[i].nome != "Stregatto" ) {
+                    numeroSquadre++;
+
+                }
+            }
+            console.log("Squadre trovate: " + numeroSquadre);
+            numeroSquadre--;
+            $scope.dati.ultimi = false;
+            console.log("ultimi: " + $scope.dati.ultimi);
+            if (proposteTappa == numeroSquadre){
+                $scope.dati.ultimi = true;
+                console.log("ultimi: " + $scope.dati.ultimi);
+                console.log("Siete gli ultimi");
+            }
+        });
+    });
+
+
+
+
+
 
 
 
