@@ -77,7 +77,7 @@ a {
 }
 
 .btn:hover, .btn:focus {
-    background-color: #27ae60;
+    background-color: rgb(0,169,255);
 }
 
 .btn > * {
